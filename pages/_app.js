@@ -9,9 +9,9 @@ export default function App({ Component, pageProps }) {
       <Head>
         <title>Capstone Project</title>
       </Head>
-      <Layout>
+    
       <Component {...pageProps} />
-      </Layout>
+     
     </>
   );
 }
