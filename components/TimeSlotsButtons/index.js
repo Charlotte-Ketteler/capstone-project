@@ -1,95 +1,93 @@
+import { useState } from 'react';
+import styled from 'styled-components';
+import { TimeSlotsAndBookings, HorsesList } from '../../lib/data.js';
 
-import React, { useState } from "react";
-import styled from "styled-components";
+const BookingForm = ({ timeSlot, horsesList }) => {
+  const [numberOfPeople, setNumberOfPeople] = useState(1);
+  const [selectedHorseIds, setSelectedHorseIds] = useState(Array.from({ length: 1 }, () => horsesList[0]?.id || null));
 
-export default function TimeSlotsButtons({
-  selectedTimeSlot,
-  handleButtonClick,
-  handleSubmit,
-  formData,
-  handleSelectChange
-}) {
-  const [selectedTimeSlot, setSelectedTimeSlot] = useState(null);
-
-  const handleButtonClick = (timeSlot) => {
-    setSelectedTimeSlot(timeSlot === selectedTimeSlot ? null : timeSlot);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Handle the form submission here, e.g., make an API call to book the time slot with the selected data
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  
+  const handleHorseChange = (index, horseId) => {
+    const updatedHorseIds = [...selectedHorseIds];
+    updatedHorseIds[index] = horseId;
+    setSelectedHorseIds(updatedHorseIds);
+  };
+
+  const availableHorses = (index) => {
+    const selectedHorses = selectedHorseIds.filter((_, i) => i !== index);
+    return horsesList.filter((horse) => !selectedHorses.includes(horse.id));
   };
 
   return (
-    <>
-      <div>
-        <ButtonsOrder>
-        {TimeslotsAndBookings.map((timeslot) => (
-            <ButtonStyle
-              key={timeslot.id}
-              onClick={() => handleButtonClick(timeslot.startTime)}
-              active={selectedTimeSlot === timeslot.startTime}
-            >
-              {timeslot.startTime} - {timeslot.endTime}
-            </ButtonStyle>
+    <form onSubmit={handleSubmit}>
+      <label>
+        Personenanzahl:
+        <select value={numberOfPeople} onChange={(e) => setNumberOfPeople(e.target.value)}>
+          {Array.from({ length: 8 }, (_, i) => i + 1).map((count) => (
+            <option key={count} value={count}>
+              {count}
+            </option>
           ))}
-
-        </ButtonsOrder>
-      </div>
-
-      {/* Conditional rendering of the forms */}
-      {selectedTimeSlot && (
-       <FormContainer>
-       <form onSubmit={handleSubmit}>
-         <h2>Uhrzeit {selectedTimeSlot}</h2>
-         <h3>Personenanzahl:</h3>
-         <input
-           type="number"
-           name="numberOfPeople"
-           value={formData.numberOfPeople}
-           onChange={handleSelectChange}
-         />
-
-         <h3>Pferd:</h3>
-         <select
-           name="selectedHorseId"
-           id="Pferde"
-           value={formData.selectedHorseId}
-           onChange={handleSelectChange}
-         >
-           <option value="">--Wähle dein Pferd--</option>
-           {HorsesList.map((horse) => (
-             <option key={horse.id} value={horse.id}>
-               {horse.name}
-             </option>
-           ))}
-         </select>
-         <button type="submit">buchen</button>
-       </form>
-     </FormContainer>
-      )}
-    </>
+        </select>
+      </label>
+      {Array.from({ length: numberOfPeople }, (_, index) => (
+        <label key={index}>
+          Pferd für Person {index + 1}:
+          <select
+            value={selectedHorseIds[index] || ''}
+            onChange={(e) => handleHorseChange(index, e.target.value)}
+          >
+            <option value="">Select a horse</option>
+            {availableHorses(index).map((horse) => (
+              <option key={horse.id} value={horse.id}>
+                {horse.name}
+              </option>
+            ))}
+          </select>
+        </label>
+      ))}
+      <button type="submit">Book</button>
+    </form>
   );
-}
+};
 
-const ButtonsOrder = styled.div`
+const TimeSlotButton = ({ timeSlot, horsesList }) => {
+  const [showForm, setShowForm] = useState(false);
+
+  const toggleForm = () => {
+    setShowForm((prevShowForm) => !prevShowForm);
+  };
+
+  return (
+    <div>
+      <ButtonsTimeSlots onClick={toggleForm}>
+        {timeSlot.startTime}
+      </ButtonsTimeSlots>
+      {showForm && <BookingForm timeSlot={timeSlot} horsesList={horsesList} />}
+    </div>
+  );
+};
+
+const TimeSlotBookingApp = () => {
+  return (
+    <div>
+      {TimeSlotsAndBookings.map((timeSlot) => (
+        <TimeSlotButton key={timeSlot.id} timeSlot={timeSlot} horsesList={HorsesList} />
+      ))}
+    </div>
+  );
+};
+
+const ButtonsTimeSlots = styled.button`
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 85%;
-  border-style: none;
+  flex-direction: row;
+  gap: 30px;
   background-color: white;
+  border-radius: 5px;
 `;
 
-const ButtonStyle = styled.button`
-  width: 80%;
-  background-color: ${({ active }) => (active ? "lightblue" : "white")};
-`;
-
-const FormContainer = styled.div`
-  margin-top: 20px;
-  border: 1px solid #ccc;
-  padding: 20px;
-  width: 80%;
-`;
-
+export default TimeSlotBookingApp;
