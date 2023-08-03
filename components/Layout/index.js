@@ -1,12 +1,10 @@
 import Header from "../Header";
-import Footer from "../Footer";
 
-export default function Layout(){
-    return(
+export default function Layout({ children }) {
+    return (
         <>
-        <Header/>
-        <Footer/>
+            <Header />
+            {children}
         </>
     );
-
-}
+} 
