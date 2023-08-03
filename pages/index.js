@@ -17,6 +17,7 @@ export default function Home() {
       <main className={inter.className}>
         <Heading>riding school</Heading>
         <Timeslots />
+  
       </main>
     </>
   );
