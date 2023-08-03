@@ -1,6 +1,7 @@
 import Head from "next/head";
 import styled from "styled-components";
 import { Inter } from "next/font/google";
+import Timeslots from "@/components/Timeslots";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,7 +15,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={inter.className}>
-        <Heading>🐧Penguin Capstone Template🐧</Heading>
+        <Heading>riding school</Heading>
+        <Timeslots />
       </main>
     </>
   );
