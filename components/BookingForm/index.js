@@ -46,7 +46,7 @@ export default function BookingForm({ horsesList }) {
         </label>
         {horsesList.map(({ name, id }) => <Chip key={id} type="button" selected={selectedHorses.some((selectedHorseID) => id === selectedHorseID)} onClick={() => handleSelectHorse(id)}>{name}</Chip>)}
       </div>
-      <Link href="/BookingSuccessful"><button type="submit">Book</button></Link>
+      <Link href="/BookingSuccessful"><button type="submit">Buchen</button></Link>
     </form>
   );
 };
