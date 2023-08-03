@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styled from "styled-components";
+import Link from 'next/link';
 
 export default function BookingForm({ horsesList }) {
   const [numberOfPeople, setNumberOfPeople] = useState(1);
@@ -23,6 +24,7 @@ export default function BookingForm({ horsesList }) {
 
   function handleSubmit(event) {
     event.preventDefault();
+
   }
 
   return (
@@ -44,7 +46,7 @@ export default function BookingForm({ horsesList }) {
         </label>
         {horsesList.map(({ name, id }) => <Chip key={id} type="button" selected={selectedHorses.some((selectedHorseID) => id === selectedHorseID)} onClick={() => handleSelectHorse(id)}>{name}</Chip>)}
       </div>
-      <button type="submit">Book</button>
+      <Link href="/BookingSuccessful"><button type="submit">Book</button></Link>
     </form>
   );
 };
