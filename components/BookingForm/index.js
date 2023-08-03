@@ -42,7 +42,7 @@ export default function BookingForm({ horsesList }) {
         <label>
           Du kannst bis zu {numberOfPeople} Pferde auswählen:
         </label>
-        {horsesList.map(({ name, id }) => <Chip type="button" selected={selectedHorses.some((selectedHorseID) => id === selectedHorseID)} onClick={() => handleSelectHorse(id)}>{name}</Chip>)}
+        {horsesList.map(({ name, id }) => <Chip key={id} type="button" selected={selectedHorses.some((selectedHorseID) => id === selectedHorseID)} onClick={() => handleSelectHorse(id)}>{name}</Chip>)}
       </div>
       <button type="submit">Book</button>
     </form>
