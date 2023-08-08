@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { useRouter } from "next/router";
+import AppointmentOverview from "../AppointmentOverview";
 
 export default function BookingForm({ horsesList }) {
   const [numberOfPeople, setNumberOfPeople] = useState(1);
@@ -69,14 +70,8 @@ export default function BookingForm({ horsesList }) {
         ))}
       </div>
       <button type="submit">Buchen</button>
-      
-      <p>Personenanzahl: {numberOfPeople}</p>
-      <p>Ausgewählte Pferde:</p>
-      <ul>
-  {selectedHorses.map((horseId) => (
-    <li key={horseId}>{horsesList.find(horse => horse.id === horseId)?.name}</li>
-  ))}
-</ul>
+      <AppointmentOverview horsesList={horsesList} numberOfPeople={numberOfPeople} selectedHorses={selectedHorses}/>
+    
     </form>
   );
 }
