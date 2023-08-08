@@ -5,36 +5,32 @@ import { useRouter } from "next/router";
 export default function BookingForm({ horsesList }) {
   const [numberOfPeople, setNumberOfPeople] = useState(1);
   const [selectedHorses, setSelectedHorses] = useState([]);
-  const [
-    numberOfPeopleAppointmentOverview,
-    setNumberOfPeopleAppointmentOverview,
-  ] = useState("");
-  const [selectedHorseNames, setSelectedHorseNames] = useState([]);
-
+  
+ 
   const router = useRouter();
 
   const handleNumberOfPeopleChange = (event) => {
     setNumberOfPeople(parseInt(event.target.value));
     setSelectedHorses([]);
-    setSelectedHorseNames([]);
+ 
   };
 
-  function handleSelectHorse(id, name) {
+
+  
+  function handleSelectHorse(id, name, time) {
     console.log("Hi");
     if (!selectedHorses.includes(id)) {
       if (selectedHorses.length === numberOfPeople) {
         return;
       }
       setSelectedHorses([...selectedHorses, id]);
-      setSelectedHorseNames([...selectedHorseNames, name]);
+     
     } else {
       setSelectedHorses(selectedHorses.filter((horseID) => horseID !== id));
-      setSelectedHorseNames(
-        selectedHorseNames.filter((horseName) => horseName !== name)
-      );
-      setTimeslot("Timeslot");
     }
   }
+
+
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -44,12 +40,8 @@ export default function BookingForm({ horsesList }) {
   return (
     <form onSubmit={handleSubmit}>
       <label
-        value={numberOfPeopleAppointmentOverview}
-        type=""
-        required
-        onChange={(event) =>
-          setNumberOfPeopleAppointmentOverview(event.target.value)
-        }
+        value={numberOfPeople}
+      
       >
         Personenanzahl:
         <select value={numberOfPeople} onChange={handleNumberOfPeopleChange}>
@@ -77,14 +69,14 @@ export default function BookingForm({ horsesList }) {
         ))}
       </div>
       <button type="submit">Buchen</button>
-
-      <p>Personenanzahl: {numberOfPeopleAppointmentOverview}</p>
+      
+      <p>Personenanzahl: {numberOfPeople}</p>
       <p>Ausgewählte Pferde:</p>
       <ul>
-        {selectedHorseNames.map((name, index) => (
-          <li key={index}>{name}</li>
-        ))}
-      </ul>
+  {selectedHorses.map((horseId) => (
+    <li key={horseId}>{horsesList.find(horse => horse.id === horseId)?.name}</li>
+  ))}
+</ul>
     </form>
   );
 }
