@@ -1,14 +1,12 @@
 import styled from "styled-components";
 
-
 export default function BookingForm({
   horsesList,
   handleSubmit,
   numberOfPeople,
   handleNumberOfPeopleChange,
   selectedHorses,
-  handleSelectHorse
-
+  handleSelectHorse,
 }) {
   return (
     <form onSubmit={handleSubmit}>
@@ -25,14 +23,12 @@ export default function BookingForm({
 
       <div>
         <label>Du kannst bis zu {numberOfPeople} Pferde auswählen:</label>
-        {horsesList.map(({ name, id }) => (
+        {horsesList.map(({ name, id, time }) => (
           <Chip
             key={id}
             type="button"
-            selected={selectedHorses.some(
-              (selectedHorseID) => id === selectedHorseID
-            )}
-            onClick={() => handleSelectHorse(id, name)}
+            selected={selectedHorses.includes(id)}
+            onClick={() => handleSelectHorse(id, time, name)}
           >
             {name}
           </Chip>
@@ -41,7 +37,6 @@ export default function BookingForm({
       <button type="submit">Buchen</button>
     </form>
   );
-
 }
 
 const Chip = styled.button`

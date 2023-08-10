@@ -1,7 +1,7 @@
 import TimeslotButton from "../TimeSlotsButton";
 
 
-export default function Timeslots({showForm, toggleForm, TimeSlotsAndBookings, horsesList, selectedHorses, handleSelectHorse, handleNumberOfPeopleChange}) {
+export default function Timeslots({showForm, toggleForm, TimeSlotsAndBookings, horsesList, selectedHorses, handleSelectHorse, handleNumberOfPeopleChange, numberOfPeople}) {
  
 
   
@@ -17,6 +17,7 @@ export default function Timeslots({showForm, toggleForm, TimeSlotsAndBookings, h
           selectedHorses={selectedHorses}
           handleSelectHorse={handleSelectHorse}
           handleNumberOfPeopleChange={handleNumberOfPeopleChange}
+          numberOfPeople={numberOfPeople}
         />
       ))}
     </div>

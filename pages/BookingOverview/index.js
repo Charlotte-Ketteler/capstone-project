@@ -7,11 +7,14 @@ export default function BookingOverview({
   handleNumberOfPeopleChange,
   handleSelectHorse,
   handleSubmit,
-  selectedHorses
+  selectedHorses,  
+  showForm,
+  appointmentTime
 }) {
 
   return (
     <>
+    <h1>Terminübersicht</h1>
       <AppointmentOverview
         handleSelectHorse={handleSelectHorse}
         horsesList={horsesList}
@@ -19,7 +22,9 @@ export default function BookingOverview({
         selectedHorses={selectedHorses}
         handleNumberOfPeopleChange={handleNumberOfPeopleChange}
         handleSubmit={handleSubmit}
-      />
+        showForm={showForm}
+        appointmentTime={ appointmentTime}
+  />
     </>
   );
 }
