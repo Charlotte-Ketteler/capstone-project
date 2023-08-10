@@ -1,49 +1,18 @@
-import { useState } from "react";
 import styled from "styled-components";
-import { useRouter } from "next/router";
-import AppointmentOverview from "../AppointmentOverview";
-
-export default function BookingForm({ horsesList }) {
-  const [numberOfPeople, setNumberOfPeople] = useState(1);
-  const [selectedHorses, setSelectedHorses] = useState([]);
-  
- 
-  const router = useRouter();
-
-  const handleNumberOfPeopleChange = (event) => {
-    setNumberOfPeople(parseInt(event.target.value));
-    setSelectedHorses([]);
- 
-  };
 
 
-  
-  function handleSelectHorse(id, name, time) {
-    console.log("Hi");
-    if (!selectedHorses.includes(id)) {
-      if (selectedHorses.length === numberOfPeople) {
-        return;
-      }
-      setSelectedHorses([...selectedHorses, id]);
-     
-    } else {
-      setSelectedHorses(selectedHorses.filter((horseID) => horseID !== id));
-    }
-  }
+export default function BookingForm({
+  horsesList,
+  handleSubmit,
+  numberOfPeople,
+  handleNumberOfPeopleChange,
+  selectedHorses,
+  handleSelectHorse
 
-
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    router.push("/BookingSuccessful");
-  }
-
+}) {
   return (
     <form onSubmit={handleSubmit}>
-      <label
-        value={numberOfPeople}
-      
-      >
+      <label value={numberOfPeople}>
         Personenanzahl:
         <select value={numberOfPeople} onChange={handleNumberOfPeopleChange}>
           {Array.from({ length: 8 }, (_, i) => i + 1).map((count) => (
@@ -70,10 +39,9 @@ export default function BookingForm({ horsesList }) {
         ))}
       </div>
       <button type="submit">Buchen</button>
-      <AppointmentOverview horsesList={horsesList} numberOfPeople={numberOfPeople} selectedHorses={selectedHorses}/>
-    
     </form>
   );
+
 }
 
 const Chip = styled.button`

@@ -1,14 +1,22 @@
 import TimeslotButton from "../TimeSlotsButton";
-import { TimeSlotsAndBookings, HorsesList } from "@/lib/data.js";
 
-export default function Timeslots() {
+
+export default function Timeslots({showForm, toggleForm, TimeSlotsAndBookings, horsesList, selectedHorses, handleSelectHorse, handleNumberOfPeopleChange}) {
+ 
+
+  
   return (
     <div>
       {TimeSlotsAndBookings.map((timeSlot) => (
         <TimeslotButton
           key={timeSlot.id}
           timeSlot={timeSlot}
-          horsesList={HorsesList}
+          horsesList={horsesList}
+          showForm={showForm}
+          toggleForm={toggleForm}
+          selectedHorses={selectedHorses}
+          handleSelectHorse={handleSelectHorse}
+          handleNumberOfPeopleChange={handleNumberOfPeopleChange}
         />
       ))}
     </div>
