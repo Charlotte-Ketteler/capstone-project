@@ -1,7 +1,10 @@
 
 import Timeslots from "@/components/Timeslots";
+import Link from "next/link";
 
-export default function BookingPage({horsesList, numberOfPeople,
+export default function BookingPage({
+  horsesList, 
+  numberOfPeople,
   selectedHorses,
   handleNumberOfPeopleChange,
   handleSelectHorse,
@@ -9,7 +12,11 @@ export default function BookingPage({horsesList, numberOfPeople,
   showForm,
   appointmentTime,
   toggleForm,
-  TimeSlotsAndBookings}) {
+  TimeSlotsAndBookings,
+  timeSlots,
+  onHandleSubmit,
+  
+}) {
 
   return (
     <>
@@ -24,7 +31,11 @@ export default function BookingPage({horsesList, numberOfPeople,
         appointmentTime={appointmentTime}
         toggleForm={toggleForm}
         TimeSlotsAndBookings={TimeSlotsAndBookings}
+        timeSlots={timeSlots}
+        onHandleSubmit={onHandleSubmit} 
+        
       />
+       <Link href="/">Back to Homepage</Link>
     </>
   );
 }

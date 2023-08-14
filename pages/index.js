@@ -1,11 +1,12 @@
 import Head from "next/head";
-import styled from "styled-components";
 import { Inter } from "next/font/google";
-import Timeslots from "@/components/Timeslots";
+import Link from "next/link";
+import { CardStyled } from "@/Styles/CardStyled";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export default function Home({ recentlyBooked}) {
+ console.log("Show in Index:",recentlyBooked);
   return (
     <>
       <Head>
@@ -15,14 +16,16 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={inter.className}>
-        <Heading>riding school</Heading>
 
-        <Timeslots />
+
+        <h2>Dein nächster Termin:</h2>
+      <CardStyled>Aktuell ist kein Termin gebucht.</CardStyled>
+
+       <Link href="/BookingOverviewPage">Terminübersicht</Link>
+       <br/>
+       <Link href="/BookingPage">Termin Buchen</Link>
       </main>
     </>
   );
 }
 
-const Heading = styled.h1`
-  text-align: center;
-`;

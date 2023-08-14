@@ -1,10 +1,10 @@
 import BookingComplete from "@/components/BookingComplete"
 
-export default function BookingSuccessful(){
+export default function BookingSuccessful({ recentlyBooked }){
 
     return(
         <>
-        <BookingComplete/>
+        <BookingComplete recentlyBooked={ recentlyBooked }/>
         </>
     )
 }

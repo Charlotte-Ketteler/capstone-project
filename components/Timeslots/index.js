@@ -1,25 +1,18 @@
 import TimeslotButton from "../TimeSlotsButton";
 
+export default function Timeslots({ onHandleSubmit, timeSlots, numberOfPeople, recentlyBooked }) {
 
-export default function Timeslots({showForm, toggleForm, TimeSlotsAndBookings, horsesList, selectedHorses, handleSelectHorse, handleNumberOfPeopleChange, numberOfPeople}) {
- 
-
-  
   return (
     <div>
-      {TimeSlotsAndBookings.map((timeSlot) => (
+      {timeSlots.map((appointment) => (
         <TimeslotButton
-          key={timeSlot.id}
-          timeSlot={timeSlot}
-          horsesList={horsesList}
-          showForm={showForm}
-          toggleForm={toggleForm}
-          selectedHorses={selectedHorses}
-          handleSelectHorse={handleSelectHorse}
-          handleNumberOfPeopleChange={handleNumberOfPeopleChange}
+          key={appointment.id}
+          appointment={appointment}
+          onHandleSubmit={onHandleSubmit}
           numberOfPeople={numberOfPeople}
+          recentlyBooked={recentlyBooked}
         />
       ))}
     </div>
   );
-}
+} 
