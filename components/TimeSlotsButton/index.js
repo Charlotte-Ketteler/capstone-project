@@ -2,6 +2,7 @@ import styled from "styled-components";
 import BookingForm from "@/components/BookingForm";
 import { useState } from "react";
 
+
 export default function TimeslotButton({ onHandleSubmit, appointment, numberOfPeople, recentlyBooked }) {
   const [showForm, setShowForm] = useState(false);
 

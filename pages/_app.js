@@ -3,17 +3,18 @@ import Layout from "@/components/Layout";
 import GlobalStyle from "@/styles";
 import { TimeSlotsAndBookings } from "@/lib/data";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import useLocalStorageState from "use-local-storage-state";
 
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
-  const [timeSlots, setTimeSlots] = useState(TimeSlotsAndBookings);
-  const [recentlyBooked, setRecentlyBooked] = useState();
+  const [timeSlots, setTimeSlots] = useLocalStorageState("timeSlotsState", {defaultValue: TimeSlotsAndBookings});
+  const [recentlyBooked, setRecentlyBooked] = useLocalStorageState("recentlyBookedState");
 
  
 {/*Dieser Code verwaltet den Buchungsprozess, indem er den Status mit den gebuchten Termininformationen aktualisiert, die Zeitfensterdaten aktualisiert und zu einer Erfolgsseite navigiert.*/}
   function handleSubmit(booking) {
+  
     console.log(booking)
     setRecentlyBooked(booking); 
     const timeSlotToBeUpdated = timeSlots.find((slot) => slot.id === booking.id);

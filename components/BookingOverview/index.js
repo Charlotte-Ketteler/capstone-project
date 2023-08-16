@@ -3,11 +3,13 @@ import { HorsesList } from "@/lib/data";
 import { ImageCowgirlOnWhiteHorse } from "../../Styles/ImageCowgirlOnWhiteHorse";
 import { CardStyled } from "@/Styles/CardStyled";
 
-export default function BookingOverview({ recentlyBooked, timeslots}) {
+export default function BookingOverview({ recentlyBooked, timeSlots}) {
   console.log("Show:", recentlyBooked);
 
   return (
     <>
+  
+    
    <CardStyled>
       <ImageCowgirlOnWhiteHorse/>
         <p>Uhrzeit: {recentlyBooked?.startTime}</p>

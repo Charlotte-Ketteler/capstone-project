@@ -15,6 +15,7 @@ export default function BookingPage({
   TimeSlotsAndBookings,
   timeSlots,
   onHandleSubmit,
+  recentlyBooked
   
 }) {
 
@@ -33,7 +34,7 @@ export default function BookingPage({
         TimeSlotsAndBookings={TimeSlotsAndBookings}
         timeSlots={timeSlots}
         onHandleSubmit={onHandleSubmit} 
-        
+        recentlyBooked={recentlyBooked}
       />
        <Link href="/">Back to Homepage</Link>
     </>

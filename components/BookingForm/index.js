@@ -1,14 +1,10 @@
 import styled from "styled-components";
-import { useState } from "react";
 import { HorsesList } from "@/lib/data";
-
-export default function BookingForm({ onHandleSubmit, appointment }) {
+import useLocalStorageState from "use-local-storage-state";
+import { useState } from "react";
+export default function BookingForm({ onHandleSubmit, appointment, onAddBooking }) {
   {
-    /*appointment ist ein Objekt, das eine Reihe von Buchungen enthält.
-Die Funktion .reduce() iteriert über das bookings-Array.
-Für jede Buchung (curr) wird die Anzahl der Personen aus dieser Buchung zum Akkumulator (acc) hinzugefügt.
-Der Anfangswert des Akkumulators ist 0.
-Das Ergebnis ist die Gesamtzahl der gebuchten Personen über alle Buchungen hinweg.*/
+  
   }
   const numberOfPeopleBooked = appointment.bookings.reduce(
     (acc, curr) => acc + curr.numberOfPeople,
@@ -19,18 +15,17 @@ Das Ergebnis ist die Gesamtzahl der gebuchten Personen über alle Buchungen hinw
     acc.push(...bookedHorses);
     return acc;
   }, []);
-  const [numberOfPeople, setNumberOfPeople] = useState(
-    numberOfPeopleBooked ?? 1
+  const [numberOfPeople, setNumberOfPeople] = useState(numberOfPeopleBooked ?? 1
   );
   {
-    /*If numberOfPeopleBooked is not null or undefined, then numberOfPeople will be initialized with the value of numberOfPeopleBooked.
-  If numberOfPeopleBooked is null or undefined, then numberOfPeople will be initialized with the value 1.
-In other words, the line of code ensures that numberOfPeople will be initialized with the number of people booked (numberOfPeopleBooked) if that value is available, and if not, it will default to 1. This is a concise way to handle possible null or undefined values and provide a fallback default value.*/
+   
   }
   const [selectedHorses, setSelectedHorses] = useState(horsesAlreadySelected);
 
   function handleSubmit(event) {
     event.preventDefault();
+    //const formElements = event.target.value;
+    //onAddBooking(formElements.booking.value)
     const booking = {
       id: appointment.id,
       numberOfPeople: numberOfPeople,
@@ -64,7 +59,7 @@ In other words, the line of code ensures that numberOfPeople will be initialized
       
       <label>
         Personenanzahl:
-        <select value={numberOfPeople} onChange={handleNumberOfPeopleChange}>
+        <select value={numberOfPeople}  onChange={handleNumberOfPeopleChange}>
           {Array.from({ length: 8 }, (_, i) => i + 1).map((count) => (
             <option key={count} value={count}>
               {count}
