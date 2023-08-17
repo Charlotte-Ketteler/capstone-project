@@ -1,5 +1,5 @@
 import BookingOverview from "@/components/BookingOverview";
-
+import { useState } from "react";
 
 export default function BookingOverviewPage({
   recentlyBooked,
@@ -7,6 +7,9 @@ export default function BookingOverviewPage({
   handleSubmit
 }) {
 console.log("show:", timeSlots)
+
+
+
   return (
     <>
     <h1>Terminübersicht</h1>

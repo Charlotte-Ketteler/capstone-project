@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }) {
 
  
 {/*Dieser Code verwaltet den Buchungsprozess, indem er den Status mit den gebuchten Termininformationen aktualisiert, die Zeitfensterdaten aktualisiert und zu einer Erfolgsseite navigiert.*/}
-  function handleSubmit(booking) {
+  function handleSubmit(booking, event) {
   
     console.log(booking)
     setRecentlyBooked(booking); 
