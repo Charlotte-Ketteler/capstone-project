@@ -4,16 +4,12 @@ import { ImageCowgirlOnWhiteHorse } from "../../Styles/ImageCowgirlOnWhiteHorse"
 import { CardStyled } from "@/Styles/CardStyled";
 import { useState } from "react";
 
-export default function BookingOverview({ recentlyBooked, timeSlots }) {
-  const [toDelete, setToDelete] = useState(false);
-
-  function handleDelete() {
-    setToDelete(true);
-  }
-
+export default function BookingOverview({ recentlyBooked, timeSlots, handleDelete }) {
+console.log("Delete:", handleDelete)
+console.log("Show recentlyBooked", recentlyBooked)
   return (
     <>
-      {toDelete ? null : (
+     
         <CardStyled>
           <ImageCowgirlOnWhiteHorse />
           <p>Uhrzeit: {recentlyBooked?.startTime}</p>
@@ -26,10 +22,10 @@ export default function BookingOverview({ recentlyBooked, timeSlots }) {
               </li>
             ))}
           </ul>
-          <button onClick={handleDelete}>löschen</button>
+          <button type="button" onClick={() => handleDelete(recentlyBooked.id)}>löschen</button>
         </CardStyled>
           
-      )}
+    
       
         <Link href="/">Back to Homepage</Link>
         <br />

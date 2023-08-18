@@ -8,24 +8,28 @@ import useLocalStorageState from "use-local-storage-state";
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
-  const [timeSlots, setTimeSlots] = useLocalStorageState("timeSlotsState", {defaultValue: TimeSlotsAndBookings});
-  const [recentlyBooked, setRecentlyBooked] = useLocalStorageState("recentlyBookedState");
+  const [timeSlots, setTimeSlots] = useLocalStorageState("timeSlots", {defaultValue: TimeSlotsAndBookings});
+  const [recentlyBooked, setRecentlyBooked] = useLocalStorageState("recentlyBooked");
 
  
 {/*Dieser Code verwaltet den Buchungsprozess, indem er den Status mit den gebuchten Termininformationen aktualisiert, die Zeitfensterdaten aktualisiert und zu einer Erfolgsseite navigiert.*/}
-  function handleSubmit(booking, event) {
-  
-    console.log(booking)
-    setRecentlyBooked(booking); 
-    const timeSlotToBeUpdated = timeSlots.find((slot) => slot.id === booking.id);
-    if (timeSlotToBeUpdated) { 
-      const horsesBooked = booking.horses.map((horseID) => ({ horseId: horseID }));
-      const updatedTimeSlot = { ...timeSlotToBeUpdated, bookings: [{ numberOfPeople: booking.numberOfPeople, horses: horsesBooked }] }
-      setTimeSlots(timeSlots.map((slot) => slot.id === booking.id ? updatedTimeSlot : slot));
-      router.push("/BookingSuccessful");
-    }
- 
+function handleSubmit(booking) {
+  console.log(booking)
+  setRecentlyBooked(booking);
+  const timeSlotToBeUpdated = timeSlots.find((slot) => slot.id === booking.id);
+  if (timeSlotToBeUpdated) {
+    const horsesBooked = booking.horses.map((horseID) => ({ horseId: horseID }));
+    const updatedTimeSlot = { ...timeSlotToBeUpdated, bookings: [{ numberOfPeople: booking.numberOfPeople, horses: horsesBooked }] }
+    setTimeSlots(timeSlots.map((slot) => slot.id === booking.id ? updatedTimeSlot : slot));
+    router.push("/BookingSuccessful");
   }
+}
+
+function handleDelete(id){
+  console.log("Show id:", id)
+  setTimeSlots(timeSlots.filter((timeslot) => (timeslot.id === id ? false : true)));
+ 
+}
 
   return (
     <>
@@ -39,7 +43,7 @@ export default function App({ Component, pageProps }) {
           timeSlots={timeSlots}
           onHandleSubmit={handleSubmit}
           recentlyBooked={recentlyBooked}
-     
+          handleDelete={handleDelete}
         />
       </Layout>
     </>

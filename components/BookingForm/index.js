@@ -15,12 +15,12 @@ export default function BookingForm({ onHandleSubmit, appointment, onAddBooking 
     acc.push(...bookedHorses);
     return acc;
   }, []);
-  const [numberOfPeople, setNumberOfPeople] = useLocalStorageState("numberOfPeople", {defaultValue: numberOfPeopleBooked ?? 1}
+  const [numberOfPeople, setNumberOfPeople] = useState(numberOfPeopleBooked ?? 1
   );
   {
    
   }
-  const [selectedHorses, setSelectedHorses] = useLocalStorageState("selectedHorses", {defaultValue: horsesAlreadySelected});
+  const [selectedHorses, setSelectedHorses] = useState(horsesAlreadySelected);
 
   function handleSubmit(event) {
     event.preventDefault();

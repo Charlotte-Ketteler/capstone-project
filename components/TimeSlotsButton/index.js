@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import BookingForm from "@/components/BookingForm";
 import { useState } from "react";
-
+import useLocalStorageState from "use-local-storage-state";
 
 export default function TimeslotButton({ onHandleSubmit, appointment, numberOfPeople, recentlyBooked }) {
   const [showForm, setShowForm] = useState(false);
