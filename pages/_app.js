@@ -19,16 +19,17 @@ function handleSubmit(booking) {
   const timeSlotToBeUpdated = timeSlots.find((slot) => slot.id === booking.id);
   if (timeSlotToBeUpdated) {
     const horsesBooked = booking.horses.map((horseID) => ({ horseId: horseID }));
+    const bookingID = Math.random().toString(32).substring(2);
     const updatedTimeSlot = { ...timeSlotToBeUpdated, bookings: [{ numberOfPeople: booking.numberOfPeople, horses: horsesBooked }] }
     setTimeSlots(timeSlots.map((slot) => slot.id === booking.id ? updatedTimeSlot : slot));
     router.push("/BookingSuccessful");
   }
 }
 
-function handleDelete(id){
-  console.log("Show id:", id)
-  setTimeSlots(timeSlots.filter((timeslot) => (timeslot.id === id ? false : true)));
- 
+function handleDelete(id, bookingID){
+  setTimeSlots(timeSlots.map((slot) => slot.id === id ? { ...slot, bookings: slot.bookings.filter((booking) => booking.id !== bookingID) } : slot));
+  setRecentlyBooked();
+  router.push("/");
 }
 
   return (
