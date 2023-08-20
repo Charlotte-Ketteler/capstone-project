@@ -5,8 +5,8 @@ import { CardStyled } from "@/Styles/CardStyled";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home({ recentlyBooked}) {
- console.log("Show in Index:",recentlyBooked);
+export default function Home() {
+
   return (
     <>
       <Head>

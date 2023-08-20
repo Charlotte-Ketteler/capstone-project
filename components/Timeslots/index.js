@@ -1,6 +1,6 @@
 import TimeslotButton from "../TimeSlotsButton";
 
-export default function Timeslots({ onHandleSubmit, timeSlots, numberOfPeople, recentlyBooked }) {
+export default function Timeslots({ onHandleSubmit, timeSlots, numberOfPeople, recentlyBooked, handleDelete }) {
 
   return (
     <div>
@@ -11,6 +11,8 @@ export default function Timeslots({ onHandleSubmit, timeSlots, numberOfPeople, r
           onHandleSubmit={onHandleSubmit}
           numberOfPeople={numberOfPeople}
           recentlyBooked={recentlyBooked}
+          handleDelete={handleDelete}
+          
         />
       ))}
     </div>

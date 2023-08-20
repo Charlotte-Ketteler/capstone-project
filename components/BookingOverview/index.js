@@ -7,12 +7,13 @@ import { DeleteButton } from "@/Styles/Buttons";
 
 export default function BookingOverview({ recentlyBooked, timeSlots, handleDelete }) {
 console.log("Delete:", handleDelete)
-console.log("Show recentlyBooked", recentlyBooked)
+
   return (
     <>
      
         <CardStyled>
           <ImageCowgirlOnWhiteHorse />
+          <p>Datum: {recentlyBooked?.currentDate}</p>
           <p>Uhrzeit: {recentlyBooked?.startTime}</p>
           <div>Personen: {recentlyBooked?.numberOfPeople}</div>
           <p> Pferde:</p>
@@ -23,11 +24,11 @@ console.log("Show recentlyBooked", recentlyBooked)
               </li>
             ))}
           </ul>
-          <DeleteButton type="button" onClick={() => handleDelete(recentlyBooked.id, recentlyBooked.bookingID)}>löschen</DeleteButton>
+         
         </CardStyled>
-   
+        <DeleteButton type="button" onClick={() => handleDelete(recentlyBooked.id, recentlyBooked.bookingID, recentlyBooked.currentDate)}>löschen</DeleteButton>
     
-      
+        <br />
         <Link href="/">Back to Homepage</Link>
         <br />
         <Link href="/BookingPage">Termin Buchen</Link>

@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import BookingForm from "@/components/BookingForm";
 import { useState } from "react";
-import useLocalStorageState from "use-local-storage-state";
 
-export default function TimeslotButton({ onHandleSubmit, appointment, numberOfPeople, recentlyBooked }) {
+
+export default function TimeslotButton({ onHandleSubmit, appointment, numberOfPeople, recentlyBooked, handleDelete }) {
   const [showForm, setShowForm] = useState(false);
 
   const toggleForm = () => {
@@ -21,6 +21,7 @@ export default function TimeslotButton({ onHandleSubmit, appointment, numberOfPe
           appointment={appointment}
           numberOfPeople={numberOfPeople}
           recentlyBooked={recentlyBooked}
+          handleDelete={handleDelete}
         />
       )}
     </div>

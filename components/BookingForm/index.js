@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { HorsesList } from "@/lib/data";
-import useLocalStorageState from "use-local-storage-state";
+import { HorsesList, getCurrentDate } from "@/lib/data";
 import { useState } from "react";
 export default function BookingForm({ onHandleSubmit, appointment, onAddBooking }) {
   {
@@ -31,9 +30,11 @@ export default function BookingForm({ onHandleSubmit, appointment, onAddBooking 
       numberOfPeople: numberOfPeople,
       horses: selectedHorses, 
       startTime: appointment.startTime,
-      endTime: appointment.endTime
+      endTime: appointment.endTime,
+      currentDate: getCurrentDate(),
     };
     onHandleSubmit(booking);
+    
   }
 
   const handleNumberOfPeopleChange = (event) => {
@@ -55,7 +56,7 @@ export default function BookingForm({ onHandleSubmit, appointment, onAddBooking 
   return (
     
     
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} >
       
       <label>
         Personenanzahl:
