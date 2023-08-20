@@ -14,13 +14,12 @@ export default function App({ Component, pageProps }) {
   });
   const [recentlyBooked, setRecentlyBooked] = useLocalStorageState(
     "recentlyBooked",
-    { defaultValue: null }
+    { defaultValue: []}
   );
 
-  {
-    /*Dieser Code verwaltet den Buchungsprozess, indem er den Status mit den gebuchten Termininformationen aktualisiert, die Zeitfensterdaten aktualisiert und zu einer Erfolgsseite navigiert.*/
-  }
-  function handleSubmit(booking) {
+ console.log("Show me recentlyBooked on app.js:", recentlyBooked)
+ 
+  function handleSubmit(booking, newBooking) {
     const timeSlotToBeUpdated = timeSlots.find(
       (slot) => slot.id === booking.id
     );
@@ -45,7 +44,7 @@ export default function App({ Component, pageProps }) {
           slot.id === booking.id ? updatedTimeSlot : slot
         )
       );
-      setRecentlyBooked({ ...booking, bookingID });
+      setRecentlyBooked([ ...booking, {...newBooking, bookingID }]);
 
       router.push("/BookingSuccessful");
     }

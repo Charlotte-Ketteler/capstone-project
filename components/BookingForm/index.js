@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { HorsesList, getCurrentDate } from "@/lib/data";
 import { useState } from "react";
+import useLocalStorageState from "use-local-storage-state";
 export default function BookingForm({ onHandleSubmit, appointment, onAddBooking }) {
   {
   
@@ -36,6 +37,8 @@ export default function BookingForm({ onHandleSubmit, appointment, onAddBooking 
     onHandleSubmit(booking);
     
   }
+
+
 
   const handleNumberOfPeopleChange = (event) => {
     setNumberOfPeople(parseInt(event.target.value));
