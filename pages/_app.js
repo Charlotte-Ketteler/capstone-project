@@ -14,7 +14,7 @@ export default function App({ Component, pageProps }) {
   });
   const [recentlyBooked, setRecentlyBooked] = useLocalStorageState(
     "recentlyBooked",
-    { defaultValue: []}
+    { defaultValue: null}
   );
 
  console.log("Show me recentlyBooked on app.js:", recentlyBooked)
@@ -45,7 +45,7 @@ export default function App({ Component, pageProps }) {
           slot.id === booking.id ? updatedTimeSlot : slot
         )
       );
-      setRecentlyBooked({ ...booking, bookingID });
+      setRecentlyBooked([{ ...booking, bookingID }]);
 
       router.push("/BookingSuccessful");
     }
