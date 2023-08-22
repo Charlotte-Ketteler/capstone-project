@@ -4,8 +4,6 @@ import GlobalStyle from "@/styles";
 import { TimeSlotsAndBookings } from "@/lib/data";
 import { useRouter } from "next/router";
 import useLocalStorageState from "use-local-storage-state";
-import { useState } from "react";
-import { getCurrentDate } from "@/lib/data";
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
@@ -14,13 +12,12 @@ export default function App({ Component, pageProps }) {
   });
   const [recentlyBooked, setRecentlyBooked] = useLocalStorageState(
     "recentlyBooked",
-    { defaultValue: null}
+    { defaultValue: null }
   );
 
- console.log("Show me recentlyBooked on app.js:", recentlyBooked)
- 
+  console.log("Show me recentlyBooked on app.js:", recentlyBooked);
+
   function handleSubmit(booking) {
-    
     const timeSlotToBeUpdated = timeSlots.find(
       (slot) => slot.id === booking.id
     );
@@ -45,7 +42,7 @@ export default function App({ Component, pageProps }) {
           slot.id === booking.id ? updatedTimeSlot : slot
         )
       );
-      setRecentlyBooked([{ ...booking, bookingID }]);
+      setRecentlyBooked({ ...booking, bookingID });
 
       router.push("/BookingSuccessful");
     }

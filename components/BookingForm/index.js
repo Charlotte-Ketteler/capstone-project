@@ -1,10 +1,8 @@
 import styled from "styled-components";
 import { HorsesList, getCurrentDate } from "@/lib/data";
 import { useState } from "react";
-import useLocalStorageState from "use-local-storage-state";
-export default function BookingForm({ onHandleSubmit, appointment, onAddBooking }) {
+export default function BookingForm({ onHandleSubmit, appointment }) {
   {
-  
   }
   const numberOfPeopleBooked = appointment.bookings.reduce(
     (acc, curr) => acc + curr.numberOfPeople,
@@ -15,10 +13,10 @@ export default function BookingForm({ onHandleSubmit, appointment, onAddBooking 
     acc.push(...bookedHorses);
     return acc;
   }, []);
-  const [numberOfPeople, setNumberOfPeople] = useState(numberOfPeopleBooked ?? 1
+  const [numberOfPeople, setNumberOfPeople] = useState(
+    numberOfPeopleBooked ?? 1
   );
   {
-   
   }
   const [selectedHorses, setSelectedHorses] = useState(horsesAlreadySelected);
 
@@ -29,22 +27,19 @@ export default function BookingForm({ onHandleSubmit, appointment, onAddBooking 
     const booking = {
       id: appointment.id,
       numberOfPeople: numberOfPeople,
-      horses: selectedHorses, 
+      horses: selectedHorses,
       startTime: appointment.startTime,
       endTime: appointment.endTime,
       currentDate: getCurrentDate(),
     };
     onHandleSubmit(booking);
-    
   }
-
-
 
   const handleNumberOfPeopleChange = (event) => {
     setNumberOfPeople(parseInt(event.target.value));
     setSelectedHorses([]);
   };
-  //hier wird festgelegt, wie viele Pferde man je nach Person auswählen kann
+
   function handleSelectHorse(id) {
     if (!selectedHorses.includes(id)) {
       if (selectedHorses.length === numberOfPeople) {
@@ -57,13 +52,10 @@ export default function BookingForm({ onHandleSubmit, appointment, onAddBooking 
   }
 
   return (
-    
-    
-    <form onSubmit={handleSubmit} >
-      
+    <form onSubmit={handleSubmit}>
       <label>
         Personenanzahl:
-        <select value={numberOfPeople}  onChange={handleNumberOfPeopleChange}>
+        <select value={numberOfPeople} onChange={handleNumberOfPeopleChange}>
           {Array.from({ length: 8 }, (_, i) => i + 1).map((count) => (
             <option key={count} value={count}>
               {count}

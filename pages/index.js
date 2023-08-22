@@ -6,7 +6,6 @@ import { CardStyled } from "@/Styles/CardStyled";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-
   return (
     <>
       <Head>
@@ -16,14 +15,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={inter.className}>
-
-
         <h2>Dein nächster Termin:</h2>
-      <CardStyled>Aktuell ist kein Termin gebucht.</CardStyled>
+        <CardStyled>Aktuell ist kein Termin gebucht.</CardStyled>
 
-       <Link href="/BookingOverviewPage">Terminübersicht</Link>
-       <br/>
-       <Link href="/BookingPage">Termin Buchen</Link>
+        <Link href="/BookingOverviewPage">Terminübersicht</Link>
+        <br />
+        <Link href="/BookingPage">Termin Buchen</Link>
       </main>
     </>
   );

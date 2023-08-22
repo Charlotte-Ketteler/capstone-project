@@ -1,10 +1,9 @@
-
 import Timeslots from "@/components/Timeslots";
 import Link from "next/link";
 import { getCurrentDate } from "@/lib/data";
 
 export default function BookingPage({
-  horsesList, 
+  horsesList,
   numberOfPeople,
   selectedHorses,
   handleNumberOfPeopleChange,
@@ -16,14 +15,11 @@ export default function BookingPage({
   TimeSlotsAndBookings,
   timeSlots,
   onHandleSubmit,
-  recentlyBooked
-
-  
+  recentlyBooked,
 }) {
-
   return (
     <>
-    <p>Datum: {getCurrentDate()} </p>
+      <p>Datum: {getCurrentDate()} </p>
       <Timeslots
         horsesList={horsesList}
         numberOfPeople={numberOfPeople}
@@ -36,10 +32,10 @@ export default function BookingPage({
         toggleForm={toggleForm}
         TimeSlotsAndBookings={TimeSlotsAndBookings}
         timeSlots={timeSlots}
-        onHandleSubmit={onHandleSubmit} 
+        onHandleSubmit={onHandleSubmit}
         recentlyBooked={recentlyBooked}
       />
-       <Link href="/">Back to Homepage</Link>
+      <Link href="/">Back to Homepage</Link>
     </>
   );
 }
