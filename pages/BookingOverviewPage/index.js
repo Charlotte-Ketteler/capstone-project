@@ -6,8 +6,6 @@ export default function BookingOverviewPage({
   handleSubmit,
   handleDelete,
 }) {
-  console.log("show:", timeSlots);
-
   return (
     <>
       <h1>Terminübersicht</h1>

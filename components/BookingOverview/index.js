@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { HorsesList } from "@/lib/data";
-import { ImageCowgirlOnWhiteHorse } from "../../Styles/ImageCowgirlOnWhiteHorse";
 import { CardStyled } from "@/Styles/CardStyled";
+import { styled } from "styled-components";
 
 import { DeleteButton } from "@/Styles/Buttons";
 
@@ -10,12 +10,15 @@ export default function BookingOverview({
   timeSlots,
   handleDelete,
 }) {
-  console.log("Delete:", handleDelete);
-
   return (
     <>
       <CardStyled>
-        <ImageCowgirlOnWhiteHorse />
+        <ImageStyled
+          src="/cowgirl_on_white_horse.jpg"
+          alt="cowgirl on white horse"
+          height={220}
+          width={332}
+        />
         <p>Datum: {recentlyBooked?.currentDate}</p>
         <p>Uhrzeit: {recentlyBooked?.startTime}</p>
         <div>Personen: {recentlyBooked?.numberOfPeople}</div>
@@ -48,3 +51,7 @@ export default function BookingOverview({
     </>
   );
 }
+
+const ImageStyled = styled.img`
+  border-radius: 10px;
+`;

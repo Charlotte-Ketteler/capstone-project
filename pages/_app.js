@@ -15,8 +15,6 @@ export default function App({ Component, pageProps }) {
     { defaultValue: null }
   );
 
-  console.log("Show me recentlyBooked on app.js:", recentlyBooked);
-
   function handleSubmit(booking) {
     const timeSlotToBeUpdated = timeSlots.find(
       (slot) => slot.id === booking.id
@@ -42,7 +40,7 @@ export default function App({ Component, pageProps }) {
           slot.id === booking.id ? updatedTimeSlot : slot
         )
       );
-      setRecentlyBooked({ ...booking, bookingID });
+      setRecentlyBooked({  bookingID, ...booking });
 
       router.push("/BookingSuccessful");
     }

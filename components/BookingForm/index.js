@@ -2,8 +2,7 @@ import styled from "styled-components";
 import { HorsesList, getCurrentDate } from "@/lib/data";
 import { useState } from "react";
 export default function BookingForm({ onHandleSubmit, appointment }) {
-  {
-  }
+
   const numberOfPeopleBooked = appointment.bookings.reduce(
     (acc, curr) => acc + curr.numberOfPeople,
     0
@@ -13,11 +12,13 @@ export default function BookingForm({ onHandleSubmit, appointment }) {
     acc.push(...bookedHorses);
     return acc;
   }, []);
+
+
+  
   const [numberOfPeople, setNumberOfPeople] = useState(
     numberOfPeopleBooked ?? 1
   );
-  {
-  }
+  
   const [selectedHorses, setSelectedHorses] = useState(horsesAlreadySelected);
 
   function handleSubmit(event) {
