@@ -1,14 +1,22 @@
 import TimeslotButton from "../TimeSlotsButton";
-import { TimeSlotsAndBookings, HorsesList } from "@/lib/data.js";
 
-export default function Timeslots() {
+export default function Timeslots({
+  onHandleSubmit,
+  timeSlots,
+  numberOfPeople,
+  recentlyBooked,
+  handleDelete,
+}) {
   return (
     <div>
-      {TimeSlotsAndBookings.map((timeSlot) => (
+      {timeSlots.map((appointment) => (
         <TimeslotButton
-          key={timeSlot.id}
-          timeSlot={timeSlot}
-          horsesList={HorsesList}
+          key={appointment.id}
+          appointment={appointment}
+          onHandleSubmit={onHandleSubmit}
+          numberOfPeople={numberOfPeople}
+          recentlyBooked={recentlyBooked}
+          handleDelete={handleDelete}
         />
       ))}
     </div>
