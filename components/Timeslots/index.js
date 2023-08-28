@@ -3,22 +3,20 @@ import TimeslotButton from "../TimeSlotsButton";
 export default function Timeslots({
   onHandleSubmit,
   timeSlots,
-  numberOfPeople,
   recentlyBooked,
-  handleDelete,
+  onHandleDelete,
 }) {
   return (
     <div>
-      {timeSlots.map((appointment) => (
+      {timeSlots.map((timeslot) => (
         <TimeslotButton
-          key={appointment.id}
-          appointment={appointment}
+          key={timeslot.id}
+          timeslot={timeslot}
           onHandleSubmit={onHandleSubmit}
-          numberOfPeople={numberOfPeople}
           recentlyBooked={recentlyBooked}
-          handleDelete={handleDelete}
+          onHandleDelete={onHandleDelete}
         />
       ))}
     </div>
   );
-}
+} 

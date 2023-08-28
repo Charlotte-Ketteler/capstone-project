@@ -3,8 +3,7 @@ import BookingOverview from "@/components/BookingOverview";
 export default function BookingOverviewPage({
   recentlyBooked,
   timeSlots,
-  handleSubmit,
-  handleDelete,
+  onHandleDelete,
 }) {
   return (
     <>
@@ -12,8 +11,7 @@ export default function BookingOverviewPage({
       <BookingOverview
         recentlyBooked={recentlyBooked}
         timeSlots={timeSlots}
-        handleSubmit={handleSubmit}
-        handleDelete={handleDelete}
+        onHandleDelete={onHandleDelete}
       />
     </>
   );

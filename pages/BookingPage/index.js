@@ -3,16 +3,7 @@ import Link from "next/link";
 import { getCurrentDate } from "@/lib/data";
 
 export default function BookingPage({
-  horsesList,
-  numberOfPeople,
-  selectedHorses,
-  handleNumberOfPeopleChange,
-  handleSelectHorse,
-  handleSubmit,
-  showForm,
-  appointmentTime,
-  toggleForm,
-  TimeSlotsAndBookings,
+  onHandleDelete,
   timeSlots,
   onHandleSubmit,
   recentlyBooked,
@@ -21,16 +12,7 @@ export default function BookingPage({
     <>
       <p>Datum: {getCurrentDate()} </p>
       <Timeslots
-        horsesList={horsesList}
-        numberOfPeople={numberOfPeople}
-        selectedHorses={selectedHorses}
-        handleNumberOfPeopleChange={handleNumberOfPeopleChange}
-        handleSelectHorse={handleSelectHorse}
-        handleSubmit={handleSubmit}
-        showForm={showForm}
-        appointmentTime={appointmentTime}
-        toggleForm={toggleForm}
-        TimeSlotsAndBookings={TimeSlotsAndBookings}
+        onHandleDelete={onHandleDelete}
         timeSlots={timeSlots}
         onHandleSubmit={onHandleSubmit}
         recentlyBooked={recentlyBooked}
@@ -38,4 +20,4 @@ export default function BookingPage({
       <Link href="/">Back to Homepage</Link>
     </>
   );
-}
+} 

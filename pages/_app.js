@@ -17,30 +17,58 @@ export default function App({ Component, pageProps }) {
 
   function handleSubmit(booking) {
     const timeSlotToBeUpdated = timeSlots.find(
-      (slot) => slot.id === booking.id
+      (slot) => slot.id === booking.timeslot_id
     );
+    console.log(booking)
     if (timeSlotToBeUpdated) {
-      const horsesBooked = booking.horses.map((horseID) => ({
-        horseId: horseID,
-      }));
-      const bookingID = Math.random().toString(32).substring(2);
-      const updatedTimeSlot = {
-        ...timeSlotToBeUpdated,
-        bookings: [
-          ...timeSlotToBeUpdated.bookings,
-          {
-            id: bookingID,
-            numberOfPeople: booking.numberOfPeople,
-            horses: horsesBooked,
-          },
-        ],
-      };
-      setTimeSlots(
-        timeSlots.map((slot) =>
-          slot.id === booking.id ? updatedTimeSlot : slot
-        )
+      const bookingToBeUpdated = timeSlotToBeUpdated.bookings.find(
+        (b) => b.id === booking.booking_id
       );
-      setRecentlyBooked({  bookingID, ...booking });
+      if (bookingToBeUpdated) {
+        const horsesBooked = booking.horses.map((horseID) => ({
+          horseId: horseID,
+        }));
+        const updatedTimeSlot = {
+          ...timeSlotToBeUpdated,
+          bookings: timeSlotToBeUpdated.bookings.map((entry) =>
+            entry.id === booking.booking_id
+              ? {
+                  ...entry,
+                  horses: horsesBooked,
+                  numberOfPeople: booking.numberOfPeople,
+                }
+              : entry
+          ),
+        };
+        setTimeSlots(
+          timeSlots.map((slot) =>
+            slot.id === booking.timeslot_id ? updatedTimeSlot : slot
+          )
+        );
+        setRecentlyBooked({ ...booking });
+      } else {
+        const horsesBooked = booking.horses.map((horseID) => ({
+          horseId: horseID,
+        }));
+        const bookingID = Math.random().toString(32).substring(2);
+        const updatedTimeSlot = {
+          ...timeSlotToBeUpdated,
+          bookings: [
+            ...timeSlotToBeUpdated.bookings,
+            {
+              id: bookingID,
+              numberOfPeople: booking.numberOfPeople,
+              horses: horsesBooked,
+            },
+          ],
+        };
+        setTimeSlots(
+          timeSlots.map((slot) =>
+            slot.id === booking.timeslot_id ? updatedTimeSlot : slot
+          )
+        );
+        setRecentlyBooked({ bookingID, ...booking });
+      }
 
       router.push("/BookingSuccessful");
     }
@@ -60,10 +88,7 @@ export default function App({ Component, pageProps }) {
       )
     );
     setRecentlyBooked(null);
-
-    router.push("/BookingOverviewPage");
   }
-
   return (
     <>
       <GlobalStyle />
@@ -76,7 +101,7 @@ export default function App({ Component, pageProps }) {
           timeSlots={timeSlots}
           onHandleSubmit={handleSubmit}
           recentlyBooked={recentlyBooked}
-          handleDelete={handleDelete}
+          onHandleDelete={handleDelete}
         />
       </Layout>
     </>
