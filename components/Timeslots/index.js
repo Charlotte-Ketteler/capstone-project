@@ -1,4 +1,6 @@
 import TimeslotButton from "../TimeSlotsButton";
+import { styled } from "styled-components";
+import { Body } from "@/Styles/Body";
 
 export default function Timeslots({
   onHandleSubmit,
@@ -7,16 +9,20 @@ export default function Timeslots({
   onHandleDelete,
 }) {
   return (
-    <div>
+    <Body>
+  
       {timeSlots.map((timeslot) => (
-        <TimeslotButton
+          <TimeslotButton
           key={timeslot.id}
           timeslot={timeslot}
           onHandleSubmit={onHandleSubmit}
           recentlyBooked={recentlyBooked}
           onHandleDelete={onHandleDelete}
         />
+    
       ))}
-    </div>
+          
+    </Body>
   );
 } 
+

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import BookingList from "@/components/BookingList";
 import { useState } from "react";
+import { Body } from "@/Styles/Body";
 
 export default function TimeslotButton({
   onHandleSubmit,
@@ -15,7 +16,7 @@ export default function TimeslotButton({
 
   return (
     <div>
-      <ButtonsTimeSlots onClick={toggleForm}>
+      <ButtonsTimeSlots onClick={toggleForm} >
         {timeslot.startTime} - {timeslot.endTime}
       </ButtonsTimeSlots>
       {showList && (
@@ -30,9 +31,11 @@ export default function TimeslotButton({
 }
 
 const ButtonsTimeSlots = styled.button`
-  margin-left: 35%;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  background-color: white;
-  border-radius: 5px;
+
+padding: 3px 10px;
+margin: 0px 5px 10px 0px;
+border-radius: 10px;
+  background-color: #76B5C5;
+
 `; 
+

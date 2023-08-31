@@ -1,6 +1,8 @@
 import Timeslots from "@/components/Timeslots";
 import Link from "next/link";
 import { getCurrentDate } from "@/lib/data";
+import { styled } from "styled-components";
+
 
 export default function BookingPage({
   onHandleDelete,
@@ -10,14 +12,18 @@ export default function BookingPage({
 }) {
   return (
     <>
-      <p>Datum: {getCurrentDate()} </p>
+      <Date>Datum: {getCurrentDate()} </Date>
       <Timeslots
         onHandleDelete={onHandleDelete}
         timeSlots={timeSlots}
         onHandleSubmit={onHandleSubmit}
         recentlyBooked={recentlyBooked}
       />
-      <Link href="/">Back to Homepage</Link>
+   
     </>
   );
 } 
+
+const Date = styled.p`
+margin-left: 10%;
+`;

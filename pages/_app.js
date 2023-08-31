@@ -4,6 +4,7 @@ import GlobalStyle from "@/styles";
 import { TimeSlotsAndBookings } from "@/lib/data";
 import { useRouter } from "next/router";
 import useLocalStorageState from "use-local-storage-state";
+import Footer from "@/components/Footer";
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
@@ -19,7 +20,7 @@ export default function App({ Component, pageProps }) {
     const timeSlotToBeUpdated = timeSlots.find(
       (slot) => slot.id === booking.timeslot_id
     );
-    console.log(booking)
+    console.log(booking);
     if (timeSlotToBeUpdated) {
       const bookingToBeUpdated = timeSlotToBeUpdated.bookings.find(
         (b) => b.id === booking.booking_id
@@ -70,7 +71,7 @@ export default function App({ Component, pageProps }) {
         setRecentlyBooked({ bookingID, ...booking });
       }
 
-      router.push("/BookingSuccessful");
+      router.push("/BookingOverviewPage");
     }
   }
 
@@ -92,9 +93,11 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <GlobalStyle />
+
       <Head>
         <title>Capstone Project</title>
       </Head>
+
       <Layout>
         <Component
           {...pageProps}
@@ -103,6 +106,7 @@ export default function App({ Component, pageProps }) {
           recentlyBooked={recentlyBooked}
           onHandleDelete={handleDelete}
         />
+<Footer/>
       </Layout>
     </>
   );

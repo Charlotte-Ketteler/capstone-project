@@ -7,7 +7,7 @@ export default function BookingOverviewPage({
 }) {
   return (
     <>
-      <h1>Terminübersicht</h1>
+      <h1>Deine Buchung war erfolgreich</h1>
       <BookingOverview
         recentlyBooked={recentlyBooked}
         timeSlots={timeSlots}

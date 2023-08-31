@@ -1,20 +1,37 @@
 import Link from "next/link";
+import { useState } from "react";
+import { DeleteButton } from "@/Styles/Buttons";
+import { styled } from "styled-components";
+import { Body } from "@/Styles/Body";
 
 export default function BookingList({ timeslot, onHandleDelete }) {
   const numberOfPeopleBooked = timeslot.bookings.reduce(
     (acc, curr) => acc + curr.numberOfPeople,
     0
   );
+
+  const [inputValue, setInputValue] = useState('');
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log('Submitted:', inputValue);
+    setInputValue('');
+
+  };
   return (
-    <ul>
+    <div>
       {timeslot.bookings.map((booking) => (
         <li key={booking.id}>
           <Link href={`/BookingPage/${timeslot.id}?booking_id=${booking.id}`}>
-            Anzahl Personen: {booking.numberOfPeople}
+            Bereits vergebene Plätze: {booking.numberOfPeople}
           </Link>
-          <button onClick={() => onHandleDelete(timeslot.id, booking.id)}>
+          <DeleteButton onClick={() => onHandleDelete(timeslot.id, booking.id)}>
             Buchung löschen
-          </button>
+          </DeleteButton>
         </li>
       ))}
       {numberOfPeopleBooked < 8 && (
@@ -22,8 +39,23 @@ export default function BookingList({ timeslot, onHandleDelete }) {
           <Link href={`/BookingPage/${timeslot.id}/add`}>
             Neue Buchung hinzufügen
           </Link>
+          
+          <p>Möchtest du uns noch etwas mitteilen?</p>
+          <form onSubmit={handleSubmit}>
+      <textarea
+        type="text"
+        value={inputValue}
+        onChange={handleInputChange}
+        placeholder="Howdy!"
+      />
+      
+      <button type="submit">Submit</button>
+    </form>
         </div>
+
+        
       )}
-    </ul>
+    </div>
   );
 } 
+

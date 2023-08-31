@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { HorsesList } from "@/lib/data";
 import { useState } from "react";
+import { Chip } from "@/Styles/Buttons";
+import { SubmitButton } from "@/Styles/Buttons";
 
 export default function BookingForm({
   timeSlotID,
@@ -70,16 +72,8 @@ export default function BookingForm({
           </Chip>
         ))}
       </div>
-      <button type="submit">Buchen</button>
+      <SubmitButton type="submit">Buchen</SubmitButton>
     </form>
   );
 }
 
-const Chip = styled.button`
-  padding: 3px 10px;
-  margin: 0px 5px;
-  border-radius: 10px;
-  background-color: ${({ selected }) =>
-    selected ? "rgb(118,181,197)" : "rgb(171,219,227)"};
-  border-color: rgb(171, 219, 227);
-`; 
