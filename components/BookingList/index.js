@@ -40,16 +40,19 @@ export default function BookingList({ timeslot, onHandleDelete }) {
             Neue Buchung hinzufügen
           </Link>
           
-          <p>Möchtest du uns noch etwas mitteilen?</p>
           <form onSubmit={handleSubmit}>
+      <label htmlFor="nachricht">Nachricht:</label>
+      <br/>
       <textarea
+      name = "nachricht"
+      id="nachricht"
         type="text"
         value={inputValue}
         onChange={handleInputChange}
         placeholder="Howdy!"
       />
       
-      <button type="submit">Submit</button>
+      <button type="submit">Senden</button>
     </form>
         </div>
 
