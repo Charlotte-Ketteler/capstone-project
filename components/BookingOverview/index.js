@@ -34,14 +34,14 @@ export default function BookingOverview({
           ))}
         </ul>
       </CardStyled>
-      {/*<DeleteButton
+     <DeleteButton
         type="button"
         onClick={() =>
           onHandleDelete(recentlyBooked.timeslot_id, recentlyBooked.booking_id)
         }
       >
         löschen
-      </DeleteButton>*/}
+      </DeleteButton>
 
    
     </>

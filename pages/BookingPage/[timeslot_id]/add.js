@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import BookingForm from "@/components/BookingForm";
 
+
 export default function add({ timeSlots, onHandleSubmit }) {
   const router = useRouter();
   const { timeslot_id } = router.query;
