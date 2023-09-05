@@ -1,8 +1,7 @@
 import { useRouter } from "next/router";
 import BookingForm from "@/components/BookingForm";
 
-
-export default function add({ timeSlots, onHandleSubmit }) {
+export default function Add({ timeSlots, onHandleSubmit }) {
   const router = useRouter();
   const { timeslot_id } = router.query;
   const timeSlot = timeSlots.find(
@@ -25,4 +24,4 @@ export default function add({ timeSlots, onHandleSubmit }) {
       available={8 - numberOfPeopleBooked}
     />
   );
-} 
+}
