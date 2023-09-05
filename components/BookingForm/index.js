@@ -19,6 +19,18 @@ export default function BookingForm({
     booking?.horses.map((horse) => horse.horseId) || []
   );
 
+  const [inputValue, setInputValue] = useState("");
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
+  const handleSubmitForm = (event) => {
+    event.preventDefault();
+    console.log("Submitted:", inputValue);
+    setInputValue("");
+  };
+
   function handleSubmit(event) {
     event.preventDefault();
     const bookingInfo = {
@@ -76,4 +88,3 @@ export default function BookingForm({
     </form>
   );
 }
-

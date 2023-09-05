@@ -7,8 +7,7 @@ export default function BookingComplete() {
     <>
       <Card>
         <h1>Dein Termin wurde gebucht!</h1>
-     
-      </Card >
+      </Card>
       <Link href="/BookingOverviewPage">Terminübersicht</Link>
     </>
   );
@@ -20,4 +19,4 @@ const Card = styled.div`
   border-radius: 10px;
   border-style: solid;
   border-color: black;
-`; 
+`;

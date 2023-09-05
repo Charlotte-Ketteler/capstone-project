@@ -10,18 +10,6 @@ export default function BookingList({ timeslot, onHandleDelete }) {
     0
   );
 
-  const [inputValue, setInputValue] = useState('');
-
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log('Submitted:', inputValue);
-    setInputValue('');
-
-  };
   return (
     <div>
       {timeslot.bookings.map((booking) => (
@@ -39,26 +27,8 @@ export default function BookingList({ timeslot, onHandleDelete }) {
           <Link href={`/BookingPage/${timeslot.id}/add`}>
             Neue Buchung hinzufügen
           </Link>
-          
-          <form onSubmit={handleSubmit}>
-      <label htmlFor="nachricht">Nachricht:</label>
-      <br/>
-      <textarea
-      name = "nachricht"
-      id="nachricht"
-        type="text"
-        value={inputValue}
-        onChange={handleInputChange}
-        placeholder="Howdy!"
-      />
-      
-      <button type="submit">Senden</button>
-    </form>
         </div>
-
-        
       )}
     </div>
   );
-} 
-
+}

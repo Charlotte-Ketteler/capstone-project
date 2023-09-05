@@ -32,7 +32,7 @@ export default function Booking({ timeSlots, onHandleSubmit }) {
   }, []);
 
   return (
-     <BookingForm
+    <BookingForm
       timeSlotID={timeSlot.id}
       onHandleSubmit={onHandleSubmit}
       booking={booking}
@@ -47,4 +47,4 @@ export default function Booking({ timeSlots, onHandleSubmit }) {
       ]}
     />
   );
-} 
+}

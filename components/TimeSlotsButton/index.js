@@ -16,7 +16,7 @@ export default function TimeslotButton({
 
   return (
     <div>
-      <ButtonsTimeSlots onClick={toggleForm} >
+      <ButtonsTimeSlots onClick={toggleForm}>
         {timeslot.startTime} - {timeslot.endTime}
       </ButtonsTimeSlots>
       {showList && (
@@ -31,11 +31,8 @@ export default function TimeslotButton({
 }
 
 const ButtonsTimeSlots = styled.button`
-
-padding: 3px 10px;
-margin: 0px 5px 10px 0px;
-border-radius: 10px;
-  background-color: #76B5C5;
-
-`; 
-
+  padding: 3px 10px;
+  margin: 0px 5px 10px 0px;
+  border-radius: 10px;
+  background-color: #76b5c5;
+`;

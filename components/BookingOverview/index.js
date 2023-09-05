@@ -34,7 +34,7 @@ export default function BookingOverview({
           ))}
         </ul>
       </CardStyled>
-     <DeleteButton
+      <DeleteButton
         type="button"
         onClick={() =>
           onHandleDelete(recentlyBooked.timeslot_id, recentlyBooked.booking_id)
@@ -42,12 +42,10 @@ export default function BookingOverview({
       >
         löschen
       </DeleteButton>
-
-   
     </>
   );
 }
 
 const ImageStyled = styled.img`
   border-radius: 10px;
-`; 
+`;

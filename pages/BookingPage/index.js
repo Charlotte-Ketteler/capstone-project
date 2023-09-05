@@ -3,7 +3,6 @@ import Link from "next/link";
 import { getCurrentDate } from "@/lib/data";
 import { styled } from "styled-components";
 
-
 export default function BookingPage({
   onHandleDelete,
   timeSlots,
@@ -19,11 +18,10 @@ export default function BookingPage({
         onHandleSubmit={onHandleSubmit}
         recentlyBooked={recentlyBooked}
       />
-   
     </>
   );
-} 
+}
 
 const Date = styled.p`
-margin-left: 10%;
+  margin-left: 10%;
 `;

@@ -1,7 +1,6 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import BookingList from ".";
-
 
 const timeslot = {
   id: 1,
@@ -27,19 +26,23 @@ const timeslot = {
         {
           horseId: 7,
         },
-      
       ],
     },
   ],
 };
 
+test("DeleteButton calls onHandleDelete", () => {
+  const mockOnHandleDelete = jest.fn();
 
+  render(
+    <BookingList timeslot={timeslot} onHandleDelete={mockOnHandleDelete} />
+  );
 
-test("show label input", () => {
-  render(<BookingList timeslot={timeslot} onHandleDelete={() => console.log("delete")} />);
-  const label = screen.getByText("Nachricht:");
-  const xyz = screen.getByRole("button", {name: /senden/i})
-  expect(label).toBeInTheDocument();
-  expect(xyz).toBeInTheDocument();
+  const deleteButton = screen.getByText("Buchung löschen");
+  fireEvent.click(deleteButton);
 
+  expect(mockOnHandleDelete).toHaveBeenCalledWith(
+    timeslot.id,
+    timeslot.bookings[0].id
+  );
 });

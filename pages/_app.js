@@ -106,7 +106,7 @@ export default function App({ Component, pageProps }) {
           recentlyBooked={recentlyBooked}
           onHandleDelete={handleDelete}
         />
-<Footer/>
+        <Footer />
       </Layout>
     </>
   );

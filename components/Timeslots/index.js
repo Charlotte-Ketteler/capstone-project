@@ -10,19 +10,15 @@ export default function Timeslots({
 }) {
   return (
     <Body>
-  
       {timeSlots.map((timeslot) => (
-          <TimeslotButton
+        <TimeslotButton
           key={timeslot.id}
           timeslot={timeslot}
           onHandleSubmit={onHandleSubmit}
           recentlyBooked={recentlyBooked}
           onHandleDelete={onHandleDelete}
         />
-    
       ))}
-          
     </Body>
   );
-} 
-
+}

@@ -6,7 +6,7 @@ import BookingOverview from "@/components/BookingOverview";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home({recentlyBooked, timeSlots, onHandleDelete}) {
+export default function Home({ recentlyBooked, timeSlots, onHandleDelete }) {
   return (
     <>
       <Head>
@@ -18,13 +18,10 @@ export default function Home({recentlyBooked, timeSlots, onHandleDelete}) {
       <main className={inter.className}>
         <h2>Dein nächster Termin:</h2>
         <BookingOverview
-        recentlyBooked={recentlyBooked}
-        timeSlots={timeSlots}
-        onHandleDelete={onHandleDelete}
-      />
-
-
-     
+          recentlyBooked={recentlyBooked}
+          timeSlots={timeSlots}
+          onHandleDelete={onHandleDelete}
+        />
       </main>
     </>
   );
