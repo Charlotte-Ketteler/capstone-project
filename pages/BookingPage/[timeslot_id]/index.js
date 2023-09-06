@@ -31,20 +31,23 @@ export default function Booking({ timeSlots, onHandleSubmit }) {
     return acc;
   }, []);
 
+  const ah = [
+    ...booking.horses.map((horse) =>
+      HorsesList.find((h) => h.id === horse.horseId)
+    ),
+    ...HorsesList.filter(
+      (horse) => !horsesAlreadySelected.includes(horse.id)
+    ),
+  ];
+  
+  console.log(ah);
   return (
     <BookingForm
       timeSlotID={timeSlot.id}
       onHandleSubmit={onHandleSubmit}
       booking={booking}
       available={8 - numberOfPeopleBooked + booking.numberOfPeople}
-      availableHorses={[
-        ...booking.horses.map((horse) =>
-          HorsesList.find((h) => h.id === horse.horseId)
-        ),
-        ...HorsesList.filter(
-          (horse) => !horsesAlreadySelected.includes(horse.id)
-        ),
-      ]}
+      availableHorses={ah}
     />
   );
-}
+} 

@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 import Link from "next/link";
 import { HorsesList } from "@/lib/data";
 
