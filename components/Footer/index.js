@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { styled } from "styled-components";
+import styled from "styled-components";
 import Image from "next/image";
 import { FooterIcons } from "@/Styles/Buttons";
 

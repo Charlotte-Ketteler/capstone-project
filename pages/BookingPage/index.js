@@ -1,7 +1,6 @@
 import Timeslots from "@/components/Timeslots";
-import Link from "next/link";
 import { getCurrentDate } from "@/lib/data";
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export default function BookingPage({
   onHandleDelete,

@@ -34,4 +34,5 @@ test("toggles the form when the button is clicked", () => {
   render(<TimeslotButton timeslot={timeslot} />);
   const button = screen.getByText("08:00 - 08:50");
   fireEvent.click(button);
+  expect(button).toBeInTheDocument();
 });

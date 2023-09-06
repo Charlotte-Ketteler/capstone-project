@@ -1,5 +1,4 @@
 import TimeslotButton from "../TimeSlotsButton";
-import { styled } from "styled-components";
 import { Body } from "@/Styles/Body";
 
 export default function Timeslots({

@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export const DeleteButton = styled.button`
   padding: 3px 10px;
