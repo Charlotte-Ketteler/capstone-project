@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import BookingList from "@/components/BookingList";
 import { useState } from "react";
-import { Body } from "@/Styles/Body";
 
 export default function TimeslotButton({
   onHandleSubmit,
@@ -24,6 +23,7 @@ export default function TimeslotButton({
           onHandleSubmit={onHandleSubmit}
           timeslot={timeslot}
           onHandleDelete={onHandleDelete}
+          
         />
       )}
     </div>

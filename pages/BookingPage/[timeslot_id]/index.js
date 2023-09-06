@@ -35,12 +35,9 @@ export default function Booking({ timeSlots, onHandleSubmit }) {
     ...booking.horses.map((horse) =>
       HorsesList.find((h) => h.id === horse.horseId)
     ),
-    ...HorsesList.filter(
-      (horse) => !horsesAlreadySelected.includes(horse.id)
-    ),
+    ...HorsesList.filter((horse) => !horsesAlreadySelected.includes(horse.id)),
   ];
-  
-  console.log(ah);
+
   return (
     <BookingForm
       timeSlotID={timeSlot.id}
@@ -50,4 +47,4 @@ export default function Booking({ timeSlots, onHandleSubmit }) {
       availableHorses={ah}
     />
   );
-} 
+}

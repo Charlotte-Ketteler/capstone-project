@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Link from "next/link";
-import { HorsesList } from "@/lib/data";
 
 export default function BookingComplete() {
   return (

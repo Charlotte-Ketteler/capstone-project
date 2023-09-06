@@ -1,7 +1,5 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
-import Link from "next/link";
-import { CardStyled } from "@/Styles/CardStyled";
 import BookingOverview from "@/components/BookingOverview";
 
 const inter = Inter({ subsets: ["latin"] });
