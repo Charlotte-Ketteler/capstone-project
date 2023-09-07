@@ -1,39 +1,33 @@
 import styled from "styled-components";
-import { HorsesList, getCurrentDate } from "@/lib/data";
+import { HorsesList } from "@/lib/data";
 import { useState } from "react";
-export default function BookingForm({ onHandleSubmit, appointment }) {
+import { Chip } from "@/Styles/Buttons";
+import { SubmitButton } from "@/Styles/Buttons";
 
-  const numberOfPeopleBooked = appointment.bookings.reduce(
-    (acc, curr) => acc + curr.numberOfPeople,
-    0
-  );
-  const horsesAlreadySelected = appointment.bookings.reduce((acc, curr) => {
-    const bookedHorses = curr.horses.map((horse) => horse.horseId);
-    acc.push(...bookedHorses);
-    return acc;
-  }, []);
-
-
-  
+export default function BookingForm({
+  timeSlotID,
+  onHandleSubmit,
+  booking,
+  available = 8,
+  availableHorses = HorsesList,
+}) {
   const [numberOfPeople, setNumberOfPeople] = useState(
-    numberOfPeopleBooked ?? 1
+    booking?.numberOfPeople ?? 1
   );
-  
-  const [selectedHorses, setSelectedHorses] = useState(horsesAlreadySelected);
+
+  const [selectedHorses, setSelectedHorses] = useState(
+    booking?.horses.map((horse) => horse.horseId) || []
+  );
 
   function handleSubmit(event) {
     event.preventDefault();
-    //const formElements = event.target.value;
-    //onAddBooking(formElements.booking.value)
-    const booking = {
-      id: appointment.id,
+    const bookingInfo = {
+      timeslot_id: timeSlotID,
+      booking_id: booking?.id,
       numberOfPeople: numberOfPeople,
       horses: selectedHorses,
-      startTime: appointment.startTime,
-      endTime: appointment.endTime,
-      currentDate: getCurrentDate(),
     };
-    onHandleSubmit(booking);
+    onHandleSubmit(bookingInfo);
   }
 
   const handleNumberOfPeopleChange = (event) => {
@@ -57,7 +51,7 @@ export default function BookingForm({ onHandleSubmit, appointment }) {
       <label>
         Personenanzahl:
         <select value={numberOfPeople} onChange={handleNumberOfPeopleChange}>
-          {Array.from({ length: 8 }, (_, i) => i + 1).map((count) => (
+          {Array.from({ length: available }, (_, i) => i + 1).map((count) => (
             <option key={count} value={count}>
               {count}
             </option>
@@ -67,7 +61,7 @@ export default function BookingForm({ onHandleSubmit, appointment }) {
 
       <div>
         <label>Du kannst bis zu {numberOfPeople} Pferde auswählen:</label>
-        {HorsesList.map(({ id, name }) => (
+        {availableHorses.map(({ id, name }) => (
           <Chip
             key={id}
             type="button"
@@ -78,16 +72,7 @@ export default function BookingForm({ onHandleSubmit, appointment }) {
           </Chip>
         ))}
       </div>
-      <button type="submit">Buchen</button>
+      <SubmitButton type="submit">Buchen</SubmitButton>
     </form>
   );
 }
-
-const Chip = styled.button`
-  padding: 3px 10px;
-  margin: 0px 5px;
-  border-radius: 10px;
-  background-color: ${({ selected }) =>
-    selected ? "rgb(118,181,197)" : "rgb(171,219,227)"};
-  border-color: rgb(171, 219, 227);
-`;

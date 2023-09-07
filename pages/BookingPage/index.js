@@ -1,41 +1,26 @@
 import Timeslots from "@/components/Timeslots";
-import Link from "next/link";
 import { getCurrentDate } from "@/lib/data";
+import styled from "styled-components";
 
 export default function BookingPage({
-  horsesList,
-  numberOfPeople,
-  selectedHorses,
-  handleNumberOfPeopleChange,
-  handleSelectHorse,
-  handleSubmit,
-  showForm,
-  appointmentTime,
-  toggleForm,
-  TimeSlotsAndBookings,
+  onHandleDelete,
   timeSlots,
   onHandleSubmit,
   recentlyBooked,
 }) {
   return (
     <>
-      <p>Datum: {getCurrentDate()} </p>
+      <Date>Datum: {getCurrentDate()} </Date>
       <Timeslots
-        horsesList={horsesList}
-        numberOfPeople={numberOfPeople}
-        selectedHorses={selectedHorses}
-        handleNumberOfPeopleChange={handleNumberOfPeopleChange}
-        handleSelectHorse={handleSelectHorse}
-        handleSubmit={handleSubmit}
-        showForm={showForm}
-        appointmentTime={appointmentTime}
-        toggleForm={toggleForm}
-        TimeSlotsAndBookings={TimeSlotsAndBookings}
+        onHandleDelete={onHandleDelete}
         timeSlots={timeSlots}
         onHandleSubmit={onHandleSubmit}
         recentlyBooked={recentlyBooked}
       />
-      <Link href="/">Back to Homepage</Link>
     </>
   );
 }
+
+const Date = styled.p`
+  margin-left: 10%;
+`;

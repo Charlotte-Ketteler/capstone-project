@@ -1,32 +1,29 @@
 import styled from "styled-components";
-import BookingForm from "@/components/BookingForm";
+import BookingList from "@/components/BookingList";
 import { useState } from "react";
 
 export default function TimeslotButton({
   onHandleSubmit,
-  appointment,
-  numberOfPeople,
-  recentlyBooked,
-  handleDelete,
+  timeslot,
+  onHandleDelete,
 }) {
-  const [showForm, setShowForm] = useState(false);
+  const [showList, setShowList] = useState(false);
 
   const toggleForm = () => {
-    setShowForm((prevShowForm) => !prevShowForm);
+    setShowList((prevShowForm) => !prevShowForm);
   };
 
   return (
     <div>
       <ButtonsTimeSlots onClick={toggleForm}>
-        {appointment.startTime} - {appointment.endTime}
+        {timeslot.startTime} - {timeslot.endTime}
       </ButtonsTimeSlots>
-      {showForm && (
-        <BookingForm
+      {showList && (
+        <BookingList
           onHandleSubmit={onHandleSubmit}
-          appointment={appointment}
-          numberOfPeople={numberOfPeople}
-          recentlyBooked={recentlyBooked}
-          handleDelete={handleDelete}
+          timeslot={timeslot}
+          onHandleDelete={onHandleDelete}
+          
         />
       )}
     </div>
@@ -34,9 +31,8 @@ export default function TimeslotButton({
 }
 
 const ButtonsTimeSlots = styled.button`
-  margin-left: 35%;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  background-color: white;
-  border-radius: 5px;
+  padding: 3px 10px;
+  margin: 0px 5px 10px 0px;
+  border-radius: 10px;
+  background-color: #76b5c5;
 `;
