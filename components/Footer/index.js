@@ -33,13 +33,14 @@ export default function Footer() {
 }
 
 const FooterBox = styled.div`
-  background-color: #dae9fa;
+  background-color: #F2F8FF;
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: sticky;
+  position: fixed;
   bottom: 0;
+  width: 100%;
   z-index: 1;
   margin: 0;
 `;

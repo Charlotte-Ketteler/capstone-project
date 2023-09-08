@@ -47,5 +47,5 @@ export default function BookingOverview({
 }
 
 const ImageStyled = styled.img`
-  border-radius: 10px;
+  border-radius: 20px;
 `;
