@@ -9,9 +9,10 @@ export default function Header() {
   );
 }
 const HeaderColor = styled.div`
-  background-color: #dae9fa;
+  background-color: #F2F8FF;
   height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: serif;
 `;

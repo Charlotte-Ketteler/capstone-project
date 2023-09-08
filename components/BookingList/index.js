@@ -18,7 +18,7 @@ export default function BookingList({ timeslot, onHandleDelete }) {
             Bereits vergebene Plätze: {booking.numberOfPeople}
           </Link>
           <DeleteButton onClick={() => onHandleDelete(timeslot.id, booking.id)}>
-            Buchung löschen
+            löschen
           </DeleteButton>
         </li>
       ))}
