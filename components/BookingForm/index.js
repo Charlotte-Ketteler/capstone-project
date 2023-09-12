@@ -1,8 +1,13 @@
 import styled from "styled-components";
 import { HorsesList } from "@/lib/data";
 import { useState } from "react";
-import { Chip } from "@/Styles/Buttons";
-import { SubmitButton } from "@/Styles/Buttons";
+
+
+import { 
+SubmitButton,
+Chip,
+ChoosePeopleAndHorses
+} from "./index.styled";
 
 export default function BookingForm({
   timeSlotID,
@@ -47,6 +52,7 @@ export default function BookingForm({
   }
 
   return (
+    <ChoosePeopleAndHorses>
     <form onSubmit={handleSubmit}>
       <label>
         Personenanzahl:
@@ -58,7 +64,8 @@ export default function BookingForm({
           ))}
         </select>
       </label>
-
+<br/>
+<br/><br/>
       <div>
         <label>Du kannst bis zu {numberOfPeople} Pferde auswählen:</label>
         {availableHorses.map(({ id, name }) => (
@@ -72,7 +79,10 @@ export default function BookingForm({
           </Chip>
         ))}
       </div>
+
+      <br/>
       <SubmitButton type="submit">Buchen</SubmitButton>
     </form>
+    </ChoosePeopleAndHorses>
   );
 }

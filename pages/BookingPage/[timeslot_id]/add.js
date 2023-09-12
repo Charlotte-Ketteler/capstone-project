@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import BookingForm from "@/components/BookingForm";
 import { HorsesList } from "@/lib/data";
 
+
 export default function Add({ timeSlots, onHandleSubmit }) {
   const router = useRouter();
   const { timeslot_id, booking_id } = router.query;
@@ -31,11 +32,15 @@ export default function Add({ timeSlots, onHandleSubmit }) {
   ];
 
   return (
+   
     <BookingForm
       timeSlotID={timeSlot.id}
       onHandleSubmit={onHandleSubmit}
       available={8 - numberOfPeopleBooked}
       availableHorses={ah}
     />
+
   );
 }
+
+

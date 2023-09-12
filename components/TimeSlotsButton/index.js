@@ -32,7 +32,12 @@ export default function TimeslotButton({
 
 const ButtonsTimeSlots = styled.button`
   padding: 3px 10px;
-  margin: 0px 5px 10px 0px;
-  border-radius: 10px;
-  background-color: #76b5c5;
+  margin: 0px 5px 20px 0px;
+  border-radius: 20px;
+  background-color:  #EAE6EC;
+  border-style: none;
+  box-shadow: 0px 2px 4px rgba(0, 0.6, 0.1, 0.3);
+
+  height: 25px; 
+width: 150px; 
 `;

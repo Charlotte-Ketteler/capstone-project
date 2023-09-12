@@ -38,7 +38,7 @@ test("DeleteButton calls onHandleDelete", () => {
     <BookingList timeslot={timeslot} onHandleDelete={mockOnHandleDelete} />
   );
 
-  const deleteButton = screen.getByText("Buchung löschen");
+  const deleteButton = screen.getByText("x");
   fireEvent.click(deleteButton);
 
   expect(mockOnHandleDelete).toHaveBeenCalledWith(
