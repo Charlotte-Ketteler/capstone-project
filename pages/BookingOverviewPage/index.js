@@ -1,7 +1,7 @@
 import BookingOverview from "@/components/BookingOverview";
 import { BookingSuccessfulH1 } from "./index.styled";
 
-function BookingOverviewPage({
+export default function BookingOverviewPage({
   recentlyBooked,
   timeSlots,
   onHandleDelete,
@@ -18,4 +18,3 @@ function BookingOverviewPage({
   );
 }
 
-export default BookingOverviewPage;
