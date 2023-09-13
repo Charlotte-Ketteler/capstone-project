@@ -1,5 +1,5 @@
 import BookingOverview from "@/components/BookingOverview";
-import { BookingSuccessfulH1 } from "./index.styled";
+import styled from "styled-components";
 
 export default function BookingOverviewPage({
   recentlyBooked,
@@ -18,3 +18,8 @@ export default function BookingOverviewPage({
   );
 }
 
+const BookingSuccessfulH1 = styled.p`
+  font-size: 30px;
+  margin-top: 120px;
+  margin-left: 35px;
+`;
