@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { ButtonBody } from "./index.styled";
 import { BoldPTag } from "@/components/BookingOverview/index.styled";
 
-export default function BookingPage({
+function BookingPage({
   onHandleDelete,
   timeSlots,
   onHandleSubmit,
@@ -32,3 +32,5 @@ const Date = styled.p`
   margin: 20px 0px 20px 50px;
   font-size: 13px;
 `;
+
+export default BookingPage;
