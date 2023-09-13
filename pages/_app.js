@@ -107,7 +107,6 @@ export default function App({ Component, pageProps }) {
           onHandleDelete={handleDelete}
         />
       </Layout>
-   
     </>
   );
 }

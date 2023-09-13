@@ -21,13 +21,16 @@ export const Chip = styled.button`
   background-color: ${({ selected }) =>
     selected ? "rgb(90,189,220)" : "rgb(237,235,238)"};
   border-color: rgb(171, 219, 227);
-  border-style:none; 
+  border-style: none;
   box-shadow: 0px 2px 4px rgba(0, 0.6, 0.1, 0.3);
 `;
 
-
 export const ChoosePeopleAndHorses = styled.div`
-margin-top: 180px;
-margin-left: 20px;
+  margin-top: 180px;
+  margin-left: 20px;
 `;
 
+export const SelectStyle = styled.select`
+  border-radius: 8px;
+  margin-left: 5px;
+`;

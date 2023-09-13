@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { useState } from "react";
- 
-import { 
+
+import {
   BookedButton,
-StyledLink,
-DeleteButton,
-NewBookingButton
+  StyledLink,
+  DeleteButton,
+  NewBookingButton,
 } from "./index.styled";
 
 export default function BookingList({ timeslot, onHandleDelete }) {
@@ -19,11 +19,13 @@ export default function BookingList({ timeslot, onHandleDelete }) {
       {timeslot.bookings.map((booking) => (
         <div key={booking.id}>
           <BookedButton>
-          <StyledLink href={`/BookingPage/${timeslot.id}?booking_id=${booking.id}`}>
-            Bereits gebucht: {booking.numberOfPeople}
-          </StyledLink>
+            <StyledLink
+              href={`/BookingPage/${timeslot.id}?booking_id=${booking.id}`}
+            >
+              Bereits gebucht: {booking.numberOfPeople}
+            </StyledLink>
           </BookedButton>
-         
+
           <DeleteButton onClick={() => onHandleDelete(timeslot.id, booking.id)}>
             x
           </DeleteButton>
@@ -32,9 +34,9 @@ export default function BookingList({ timeslot, onHandleDelete }) {
       {numberOfPeopleBooked < 8 && (
         <div>
           <NewBookingButton>
-          <StyledLink href={`/BookingPage/${timeslot.id}/add`}>
-            Neue Buchung 
-          </StyledLink>
+            <StyledLink href={`/BookingPage/${timeslot.id}/add`}>
+              Neue Buchung
+            </StyledLink>
           </NewBookingButton>
         </div>
       )}

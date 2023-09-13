@@ -1,4 +1,5 @@
 import BookingOverview from "@/components/BookingOverview";
+import { BookingSuccessfulH1 } from "./index.styled";
 
 export default function BookingOverviewPage({
   recentlyBooked,
@@ -7,7 +8,7 @@ export default function BookingOverviewPage({
 }) {
   return (
     <>
-      <h1>Deine Buchung war erfolgreich</h1>
+      <BookingSuccessfulH1>Deine Buchung war erfolgreich</BookingSuccessfulH1>
       <BookingOverview
         recentlyBooked={recentlyBooked}
         timeSlots={timeSlots}

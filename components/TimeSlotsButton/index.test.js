@@ -37,9 +37,7 @@ test("toggles the form when the button is clicked", () => {
   const buttonText = `${timeslot.startTime} - ${timeslot.endTime}`;
   const button = screen.getByText(buttonText);
 
-  expect(
-    screen.queryByText("Bereits gebucht: 6")
-  ).not.toBeInTheDocument();
+  expect(screen.queryByText("Bereits gebucht: 6")).not.toBeInTheDocument();
   expect(screen.queryByText("x")).not.toBeInTheDocument();
   expect(screen.queryByText("Neue Buchung")).not.toBeInTheDocument();
 
