@@ -33,10 +33,10 @@ export default function BookingOverview({
         <DateStyled>
           <BoldPTag>Datum:</BoldPTag> {bookedTimeslot?.currentDate}
         </DateStyled>
-        <p>
+        <div>
           <BoldPTag>Uhrzeit: </BoldPTag>
           {bookedTimeslot?.startTime}
-        </p>
+        </div>
         <div>
           <BoldPTag>Personen:</BoldPTag> {recentlyBooked?.numberOfPeople}
         </div>

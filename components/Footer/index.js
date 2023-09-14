@@ -12,11 +12,9 @@ export default function Footer() {
             <Link href="/">
               <Image src="/zuhause.png" alt="Home" width={30} height={30} />
             </Link>
-
             <Link href="/BookingPage">
               <Image src="/Calender.png" alt="Buchung" width={30} height={30} />
             </Link>
-
             <Link href="/BookingOverviewPage">
               <Image
                 src="/reiten.png"
@@ -43,7 +41,5 @@ background-color: white;
   width: 100%;
   z-index: 1;
   margin: 0;
-
-
   }
 `;

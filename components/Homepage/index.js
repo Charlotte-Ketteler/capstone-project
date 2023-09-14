@@ -6,7 +6,7 @@ export default function Homepage() {
     <>
       <HomeBody>
         <HowdyH1>Howdy!</HowdyH1>
-        <TextHome>Hey, starte direkt durch und verwalte deine Reitstunden.</TextHome>
+        <TextHome>Starte direkt durch und verwalte deine Reitstunden.</TextHome>
         <Link href="/BookingPage">
           <ArrowDown
             src="/pfeil-nach-unten.png"
