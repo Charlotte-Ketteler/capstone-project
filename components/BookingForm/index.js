@@ -1,8 +1,13 @@
-import styled from "styled-components";
 import { HorsesList } from "@/lib/data";
 import { useState } from "react";
-import { Chip } from "@/Styles/Buttons";
-import { SubmitButton } from "@/Styles/Buttons";
+
+import {
+  SubmitButton,
+  Chip,
+  ChoosePeopleAndHorses,
+  SelectStyle,
+} from "./index.styled";
+import { CardStyled } from "../BookingOverview/index.styled";
 
 export default function BookingForm({
   timeSlotID,
@@ -47,32 +52,40 @@ export default function BookingForm({
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Personenanzahl:
-        <select value={numberOfPeople} onChange={handleNumberOfPeopleChange}>
-          {Array.from({ length: available }, (_, i) => i + 1).map((count) => (
-            <option key={count} value={count}>
-              {count}
-            </option>
-          ))}
-        </select>
-      </label>
-
-      <div>
-        <label>Du kannst bis zu {numberOfPeople} Pferde auswählen:</label>
-        {availableHorses.map(({ id, name }) => (
-          <Chip
-            key={id}
-            type="button"
-            selected={selectedHorses.includes(id)}
-            onClick={() => handleSelectHorse(id)}
+    <ChoosePeopleAndHorses>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Personenanzahl:
+          <SelectStyle
+            value={numberOfPeople}
+            onChange={handleNumberOfPeopleChange}
           >
-            {name}
-          </Chip>
-        ))}
-      </div>
-      <SubmitButton type="submit">Buchen</SubmitButton>
-    </form>
+            {Array.from({ length: available }, (_, i) => i + 1).map((count) => (
+              <option key={count} value={count}>
+                {count}
+              </option>
+            ))}
+          </SelectStyle>
+        </label>
+        <br />
+        <br />
+        <div>
+          <label>Du kannst bis zu {numberOfPeople} Pferde auswählen:</label>
+          {availableHorses.map(({ id, name }) => (
+            <Chip
+              key={id}
+              type="button"
+              selected={selectedHorses.includes(id)}
+              onClick={() => handleSelectHorse(id)}
+            >
+              {name}
+            </Chip>
+          ))}
+        </div>
+
+        <br />
+        <SubmitButton type="submit">Buchen</SubmitButton>
+      </form>
+    </ChoosePeopleAndHorses>
   );
 }

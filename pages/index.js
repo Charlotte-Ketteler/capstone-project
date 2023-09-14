@@ -15,8 +15,7 @@ export default function Home({ recentlyBooked, timeSlots, onHandleDelete }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={inter.className}>
-    
-       <Homepage/>
+        <Homepage />
       </main>
     </>
   );

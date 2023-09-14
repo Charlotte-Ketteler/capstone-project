@@ -1,4 +1,5 @@
 import BookingOverview from "@/components/BookingOverview";
+import styled from "styled-components";
 
 export default function BookingOverviewPage({
   recentlyBooked,
@@ -7,7 +8,7 @@ export default function BookingOverviewPage({
 }) {
   return (
     <>
-      <h1>Deine Buchung war erfolgreich</h1>
+      <BookingSuccessfulH1>Deine Buchung war erfolgreich</BookingSuccessfulH1>
       <BookingOverview
         recentlyBooked={recentlyBooked}
         timeSlots={timeSlots}
@@ -16,3 +17,9 @@ export default function BookingOverviewPage({
     </>
   );
 }
+
+const BookingSuccessfulH1 = styled.p`
+  font-size: 30px;
+  margin-top: 120px;
+  margin-left: 35px;
+`;

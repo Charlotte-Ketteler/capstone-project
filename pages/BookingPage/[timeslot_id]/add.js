@@ -25,9 +25,7 @@ export default function Add({ timeSlots, onHandleSubmit }) {
   }, []);
 
   const ah = [
-    ...HorsesList.filter(
-      (horse) => !horsesAlreadySelected.includes(horse.id)
-    ),
+    ...HorsesList.filter((horse) => !horsesAlreadySelected.includes(horse.id)),
   ];
 
   return (

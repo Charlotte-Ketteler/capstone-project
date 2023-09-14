@@ -1,9 +1,12 @@
-import Link from "next/link";
 import { HorsesList } from "@/lib/data";
-import { CardStyled } from "@/Styles/CardStyled";
 import styled from "styled-components";
 
-import { DeleteButton } from "@/Styles/Buttons";
+import {
+  DeleteButtonOverview,
+  CardStyled,
+  DateStyled,
+  BoldPTag,
+} from "./index.styled";
 
 export default function BookingOverview({
   timeSlots,
@@ -16,16 +19,28 @@ export default function BookingOverview({
   return (
     <>
       <CardStyled>
-        <ImageStyled
-          src="/cowgirl_on_white_horse.jpg"
-          alt="cowgirl on white horse"
-          height={220}
-          width={332}
-        />
-        <p>Datum: {bookedTimeslot?.currentDate}</p>
-        <p>Uhrzeit: {bookedTimeslot?.startTime}</p>
-        <div>Personen: {recentlyBooked?.numberOfPeople}</div>
-        <p> Pferde:</p>
+        <DeleteButtonOverview
+          type="button"
+          onClick={() =>
+            onHandleDelete(
+              recentlyBooked.timeslot_id,
+              recentlyBooked.booking_id
+            )
+          }
+        >
+          x
+        </DeleteButtonOverview>
+        <DateStyled>
+          <BoldPTag>Datum:</BoldPTag> {bookedTimeslot?.currentDate}
+        </DateStyled>
+        <div>
+          <BoldPTag>Uhrzeit: </BoldPTag>
+          {bookedTimeslot?.startTime}
+        </div>
+        <div>
+          <BoldPTag>Personen:</BoldPTag> {recentlyBooked?.numberOfPeople}
+        </div>
+        <BoldPTag> Pferde:</BoldPTag>
         <ul>
           {recentlyBooked?.horses.map((horseID) => (
             <li key={horseID}>
@@ -34,14 +49,6 @@ export default function BookingOverview({
           ))}
         </ul>
       </CardStyled>
-      <DeleteButton
-        type="button"
-        onClick={() =>
-          onHandleDelete(recentlyBooked.timeslot_id, recentlyBooked.booking_id)
-        }
-      >
-        löschen
-      </DeleteButton>
     </>
   );
 }

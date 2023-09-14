@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styled from "styled-components";
 import Image from "next/image";
-import { FooterIcons } from "@/Styles/Buttons";
+import { FooterIcons } from "./index.styled";
 
 export default function Footer() {
   return (
@@ -12,11 +12,9 @@ export default function Footer() {
             <Link href="/">
               <Image src="/zuhause.png" alt="Home" width={30} height={30} />
             </Link>
-
             <Link href="/BookingPage">
               <Image src="/Calender.png" alt="Buchung" width={30} height={30} />
             </Link>
-
             <Link href="/BookingOverviewPage">
               <Image
                 src="/reiten.png"
@@ -33,8 +31,8 @@ export default function Footer() {
 }
 
 const FooterBox = styled.div`
-  background-color: #F2F8FF;
-  height: 50px;
+background-color: white; 
+  height: 55px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -43,4 +41,5 @@ const FooterBox = styled.div`
   width: 100%;
   z-index: 1;
   margin: 0;
+  }
 `;

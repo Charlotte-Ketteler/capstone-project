@@ -1,5 +1,5 @@
 import TimeslotButton from "../TimeSlotsButton";
-import { Body } from "@/Styles/Body";
+import styled from "styled-components";
 
 export default function Timeslots({
   onHandleSubmit,
@@ -21,3 +21,12 @@ export default function Timeslots({
     </Body>
   );
 }
+
+export const Body = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 30%;
+  overflow-y: scroll;
+  margin-bottom: 40px;
+`;

@@ -37,16 +37,14 @@ test("toggles the form when the button is clicked", () => {
   const buttonText = `${timeslot.startTime} - ${timeslot.endTime}`;
   const button = screen.getByText(buttonText);
 
-  expect(
-    screen.queryByText("Bereits vergebene Plätze: 6")
-  ).not.toBeInTheDocument();
-  expect(screen.queryByText("Buchung löschen")).not.toBeInTheDocument();
-  expect(screen.queryByText("Neue Buchung hinzufügen")).not.toBeInTheDocument();
+  expect(screen.queryByText("Bereits gebucht: 6")).not.toBeInTheDocument();
+  expect(screen.queryByText("x")).not.toBeInTheDocument();
+  expect(screen.queryByText("Neue Buchung")).not.toBeInTheDocument();
 
   fireEvent.click(button);
 
-  expect(screen.getByText("Bereits vergebene Plätze: 6")).toBeInTheDocument();
-  expect(screen.getByText("Buchung löschen")).toBeInTheDocument();
+  expect(screen.getByText("Bereits gebucht: 6")).toBeInTheDocument();
+  expect(screen.getByText("x")).toBeInTheDocument();
 
-  expect(screen.getByText("Neue Buchung hinzufügen")).toBeInTheDocument();
+  expect(screen.getByText("Neue Buchung")).toBeInTheDocument();
 });
