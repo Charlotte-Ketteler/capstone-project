@@ -2,14 +2,13 @@ import styled from "styled-components";
 
 export const DeleteButtonOverview = styled.button`
   padding: 3px 10px;
-  margin: 8px 5px 0px 245px;
-  border-radius: 50px;
+  margin: 20px 5px 0px 90px;
+  border-radius: 20px;
   background-color: #9540c6;
   border-style: none;
   color: white;
-  width: 5px;
+  width: 100px;
   display: flex;
-
   justify-content: center;
 `;
 
@@ -30,10 +29,26 @@ export const CardStyled = styled.div`
 `;
 
 export const DateStyled = styled.p`
-  font-size: 15px;
+  font-size: 13px;
+  margin-left: 5px;
 `;
 
 export const BoldPTag = styled.p`
   font-weight: bold;
   display: inline;
+`;
+
+export const InfoBackground = styled.div`
+  width: 270px;
+  height: 320px;
+  background-color: #eae6ec;
+  border-radius: 20px;
+  padding: 15px;
+`;
+
+export const Line = styled.div`
+  border-bottom: 2px solid #ada6b0;
+  width: 240px;
+  margin: 0 auto;
+  margin-bottom: 8px;
 `;

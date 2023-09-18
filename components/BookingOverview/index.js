@@ -6,6 +6,8 @@ import {
   CardStyled,
   DateStyled,
   BoldPTag,
+  InfoBackground,
+  Line,
 } from "./index.styled";
 
 export default function BookingOverview({
@@ -19,6 +21,30 @@ export default function BookingOverview({
   return (
     <>
       <CardStyled>
+        <DateStyled>
+          <BoldPTag>Datum:</BoldPTag> {bookedTimeslot?.currentDate}
+        </DateStyled>
+        <InfoBackground>
+          <div>
+            <BoldPTag>Uhrzeit: </BoldPTag>
+            {bookedTimeslot?.startTime}
+          </div>
+          <br />
+          <Line />
+          <div>
+            <BoldPTag>Personen:</BoldPTag> {recentlyBooked?.numberOfPeople}
+          </div>
+          <br />
+          <Line />
+          <BoldPTag> Pferde:</BoldPTag>
+          <ul>
+            {recentlyBooked?.horses.map((horseID) => (
+              <li key={horseID}>
+                {HorsesList.find((horse) => horse.id === horseID).name}
+              </li>
+            ))}
+          </ul>
+        </InfoBackground>
         <DeleteButtonOverview
           type="button"
           onClick={() =>
@@ -30,29 +56,7 @@ export default function BookingOverview({
         >
           x
         </DeleteButtonOverview>
-        <DateStyled>
-          <BoldPTag>Datum:</BoldPTag> {bookedTimeslot?.currentDate}
-        </DateStyled>
-        <div>
-          <BoldPTag>Uhrzeit: </BoldPTag>
-          {bookedTimeslot?.startTime}
-        </div>
-        <div>
-          <BoldPTag>Personen:</BoldPTag> {recentlyBooked?.numberOfPeople}
-        </div>
-        <BoldPTag> Pferde:</BoldPTag>
-        <ul>
-          {recentlyBooked?.horses.map((horseID) => (
-            <li key={horseID}>
-              {HorsesList.find((horse) => horse.id === horseID).name}
-            </li>
-          ))}
-        </ul>
       </CardStyled>
     </>
   );
 }
-
-const ImageStyled = styled.img`
-  border-radius: 20px;
-`;

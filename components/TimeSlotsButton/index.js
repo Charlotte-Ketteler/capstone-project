@@ -8,11 +8,10 @@ export default function TimeslotButton({
   onHandleDelete,
 }) {
   const [showList, setShowList] = useState(false);
-
+  
   const toggleForm = () => {
     setShowList((prevShowForm) => !prevShowForm);
   };
-
   return (
     <div>
       <ButtonsTimeSlots onClick={toggleForm}>
@@ -36,7 +35,6 @@ const ButtonsTimeSlots = styled.button`
   background-color: #eae6ec;
   border-style: none;
   box-shadow: 0px 2px 4px rgba(0, 0.6, 0.1, 0.3);
-
   height: 25px;
   width: 150px;
 `;
