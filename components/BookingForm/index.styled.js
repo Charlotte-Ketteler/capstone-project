@@ -8,7 +8,7 @@ border-radius: 20px;
 border-color: #5ABDDC;
 box-shadow: 0px 2px 4px rgba(0, 0.6, 0.1, 0.3);
 transition: background-color 0.3s, box-shadow 0.3s; /* Add transition for smooth effect */
-
+background-color: white; 
 &:hover {
   background-color: #FFFFFF; 
 

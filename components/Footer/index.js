@@ -23,6 +23,9 @@ export default function Footer() {
                 height={30}
               />
             </Link>
+            <Link href="/ToDoPage">
+              <Image src="/checkliste.png" alt="ToDo" width={30} height={30} />
+            </Link>
           </FooterIcons>
         </nav>
       </FooterBox>
