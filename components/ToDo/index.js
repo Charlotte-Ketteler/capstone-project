@@ -1,4 +1,4 @@
-import useLocalStorageState from "use-local-storage-state";
+import { useState } from "react";
 import {
   InputField,
   ToDoBody,
@@ -10,18 +10,22 @@ import {
 } from "./index.styled";
 
 export default function ToDo() {
-  const [todos, setTodos] = useLocalStorageState("todos", { defaultValue: [] });
-  const [task, setTask] = useLocalStorageState("task", { defaultValue: "" });
+  const [todos, setTodos] = useState([]);
+  const [task, setTask] = useState("");
 
   function addTodo() {
     if (task !== "") {
-      setTodos([...todos, task]);
+      const newTodo = {
+        id: Date.now(),
+        text: task,
+      };
+      setTodos([...todos, newTodo]);
       setTask("");
     }
   }
 
-  function deleteTodo(index) {
-    const newTodos = todos.filter((_, i) => i !== index);
+  function deleteTodo(id) {
+    const newTodos = todos.filter((todo) => todo.id !== id);
     setTodos(newTodos);
   }
 
@@ -38,12 +42,11 @@ export default function ToDo() {
           />
           <AddButton onClick={addTodo}>+</AddButton>
         </InputPosition>
-
         <ul>
-          {todos.map((todo, index) => (
-            <ToDoBackground key={index}>
-              {todo}
-              <DeleteButtonToDo onClick={() => deleteTodo(index)}>
+          {todos.map((todo) => (
+            <ToDoBackground key={todo.id}>
+              {todo.text}
+              <DeleteButtonToDo onClick={() => deleteTodo(todo.id)}>
                 x
               </DeleteButtonToDo>
             </ToDoBackground>
