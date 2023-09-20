@@ -16,7 +16,7 @@ export default function ToDo() {
   function addTodo() {
     if (task !== "") {
       const newTodo = {
-        id: Date.now(),
+        id: Math.random().toString(36).substring(2),
         text: task,
       };
       setTodos([...todos, newTodo]);
