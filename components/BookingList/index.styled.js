@@ -34,6 +34,5 @@ export const DeleteButton = styled.button`
   color: white;
   width: 5px;
   display: flex;
-
   justify-content: center;
 `;
