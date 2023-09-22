@@ -8,7 +8,7 @@ export default function BookingOverviewPage({
 }) {
   return (
     <>
-      <BookingSuccessfulH1>Deine Buchung war erfolgreich</BookingSuccessfulH1>
+      <BookingSuccessfulH1>Deine Buchung war erfolgreich!</BookingSuccessfulH1>
       <BookingOverview
         recentlyBooked={recentlyBooked}
         timeSlots={timeSlots}

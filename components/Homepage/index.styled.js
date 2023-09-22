@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const HorseLogo = styled.img`
   margin-left: 190px;
-  margin-top: 30px;
+  margin-top: 60px;
 `;
 
 export const HowdyH1 = styled.h2`

@@ -5,7 +5,7 @@ export default function Header() {
     <>
       <HomeBody>
         <HeaderColor>
-          <h1>Hill Haven Ranch</h1>
+          <BookIt>Book&Ride</BookIt>
 
           <HorseLogo
             src="/pferd.png"
@@ -19,7 +19,7 @@ export default function Header() {
   );
 }
 const HeaderColor = styled.div`
-font-size: 10px; 
+  font-size: 10px; 
   height: 80px;
   display: flex;
   flex-direction: column;
@@ -29,6 +29,18 @@ font-size: 10px;
   position: fixed;
   top: 0;
   width: 100%;
- background-color: white; 
+  background-color: white; 
   }
+`;
+
+const BookIt = styled.h1`
+  color: black;
+  font-size: 15px;
+  z-index: 3;
+  margin-top: 160px;
+  margin-right: -190px;
+  display: flex;
+  position: fixed;
+  font-family: serif;
+  color: #8e59e9;
 `;

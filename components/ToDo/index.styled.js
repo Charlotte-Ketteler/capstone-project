@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ToDoBody = styled.div`
-  margin-left: 24px;
+  margin-left: 25px;
 `;
 
 export const InputField = styled.input`
